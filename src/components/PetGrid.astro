@@ -1,0 +1,701 @@
+---
+import PetCard from "./PetCard.astro";
+import Section from "./Section.astro";
+
+interface Props {
+  variant: "linear" | "fancy";
+}
+
+const { variant } = Astro.props;
+
+const list = [
+  {
+    src: "img/dog/1.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Бублик",
+    age: "2 года",
+  },
+  {
+    src: "img/cat/1.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Сосиска",
+    age: "1.5 года",
+  },
+  {
+    src: "img/rodents/1.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Шарик-Компотик",
+    age: "6 месяцев",
+  },
+  {
+    src: "img/bird/1.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Кеша-Печенька",
+    age: "1 год",
+  },
+  {
+    src: "img/dog/2.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Пельмень",
+    age: "3 года",
+  },
+  {
+    src: "img/cat/2.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Ватрушка",
+    age: "4 года",
+  },
+  {
+    src: "img/rodents/2.jpg",
+    sterilized: true,
+    vaccinated: false,
+    title: "Сырник",
+    age: "8 месяцев",
+  },
+  {
+    src: "img/bird/2.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Гоша-Кокос",
+    age: "2 года",
+  },
+  {
+    src: "img/dog/3.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Зефир",
+    age: "1.5 года",
+  },
+  {
+    src: "img/cat/3.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Мармеладка",
+    age: "5 лет",
+  },
+  {
+    src: "img/rodents/3.jpg",
+    sterilized: false,
+    vaccinated: false,
+    title: "Пуффик-Кефирчик",
+    age: "4 месяца",
+  },
+  {
+    src: "img/bird/3.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Жорик-Бублик",
+    age: "3 года",
+  },
+  {
+    src: "img/dog/4.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Тофу",
+    age: "7 месяцев",
+  },
+  {
+    src: "img/cat/4.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Котлета",
+    age: "2.5 года",
+  },
+  {
+    src: "img/rodents/4.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Хомя-Кукурузя",
+    age: "1 год",
+  },
+  {
+    src: "img/bird/4.jpg",
+    sterilized: false,
+    vaccinated: false,
+    title: "Петруша-Одуван",
+    age: "6 месяцев",
+  },
+  {
+    src: "img/dog/5.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Веник",
+    age: "4 года",
+  },
+  {
+    src: "img/cat/5.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Сметанка",
+    age: "1 год",
+  },
+  {
+    src: "img/rodents/5.jpg",
+    sterilized: true,
+    vaccinated: false,
+    title: "Пышка-Топтыжка",
+    age: "9 месяцев",
+  },
+  {
+    src: "img/bird/5.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Аркаша-Фунтик",
+    age: "1.5 года",
+  },
+  {
+    src: "img/dog/6.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Гамбургер",
+    age: "2 года",
+  },
+  {
+    src: "img/cat/6.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Нутелла",
+    age: "3 года",
+  },
+  {
+    src: "img/rodents/6.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Шурупчик",
+    age: "5 месяцев",
+  },
+  {
+    src: "img/bird/6.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Тимоха-Батон",
+    age: "2 года",
+  },
+  {
+    src: "img/dog/7.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Пончик",
+    age: "1 год",
+  },
+  {
+    src: "img/cat/7.jpg",
+    sterilized: true,
+    vaccinated: false,
+    title: "Ириска",
+    age: "6 лет",
+  },
+  {
+    src: "img/rodents/7.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Паштетик",
+    age: "10 месяцев",
+  },
+  {
+    src: "img/bird/7.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Рома-Бананчик",
+    age: "1 год",
+  },
+];
+---
+
+<Section position="full" phone="center" bottom="large">
+  <div id="pet-grid" class:list={["pet-grid", `pet-grid--${variant}`]}>
+    {list.map((item) => <PetCard {...item} />)}
+  </div>
+</Section>
+
+<style is:global lang="scss">
+  .pet-grid {
+    display: grid;
+
+    &__button {
+      display: grid;
+      justify-items: center;
+
+      padding-inline: var(--container-padding);
+      width: 100%;
+
+      &-item {
+        display: grid;
+        width: 100%;
+        padding-top: 50px;
+
+        @include laptop-min {
+          padding-top: 100px;
+          width: 226px;
+        }
+      }
+    }
+
+    &--linear {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 15px;
+      row-gap: 40px;
+
+      @include tablet-min {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @include laptop-min {
+        grid-template-columns: 1fr 1fr 0px 1fr 1fr;
+        column-gap: 20px;
+        row-gap: 50px;
+
+        // & .pet-card__title {
+        //   min-height: 15px;
+        // }
+
+        & > a:nth-child(4n + 3) {
+          grid-column: 4 / 5;
+        }
+
+        & > a:nth-child(4n + 1),
+        & > a:nth-child(4n + 2) {
+          justify-items: end;
+          text-align: end;
+          & .pet-card__price {
+            justify-content: end;
+            flex-direction: row-reverse;
+          }
+
+          & .pet-card__variation {
+            justify-content: end;
+            // flex-direction: row-reverse;
+          }
+
+          & .pet-card__rating {
+            justify-content: end;
+          }
+        }
+      }
+
+      @include desktop-min {
+        column-gap: 30px;
+        row-gap: 60px;
+      }
+
+      @include widescreen-min {
+        column-gap: 50px;
+        row-gap: 88px;
+      }
+    }
+
+    &--fancy {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 15px;
+      row-gap: 40px;
+
+      & > a:nth-child(3n + 1) {
+        grid-column: span 2;
+
+        & .pet-card__top {
+          height: 332px;
+          width: 100%;
+        }
+
+        & .pet-card__bottom {
+          margin-top: -44px;
+          gap: 17px;
+        }
+
+        & .pet-card__name,
+        & .pet-card__price {
+          font-size: 20px;
+        }
+
+        & .pet-card__layer-web {
+          top: 16px;
+          right: 16px;
+        }
+
+        & .pet-card__layer-bottom {
+          right: 15px;
+        }
+      }
+
+      @include tablet-min {
+        grid-template-columns: repeat(3, 1fr);
+
+        & > a:nth-child(3n + 1) {
+          grid-column: unset;
+
+          & .pet-card__top {
+            height: unset;
+          }
+
+          & .pet-card__name,
+          & .pet-card__price {
+            font-size: 20px;
+          }
+
+          & .pet-card__bottom {
+            margin-top: unset;
+          }
+
+          & .pet-card__layer-web {
+            top: 15px;
+            right: 15px;
+          }
+
+          & .pet-card__layer-bottom {
+            right: 15px;
+          }
+        }
+
+        & > a:nth-child(10n + 2) {
+          grid-column: 2 / span 2;
+
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          & .pet-card__top {
+            height: 400px;
+          }
+
+          & .pet-card__bottom {
+            max-width: 310px;
+            position: relative;
+            margin-left: -100px;
+          }
+        }
+
+        & > a:nth-child(10n + 6) {
+          grid-column: 2 span;
+
+          display: flex;
+          flex-direction: row-reverse;
+          align-items: center;
+          justify-items: end;
+          text-align: end;
+
+          & .pet-card__bottom {
+            max-width: 310px;
+            position: relative;
+            margin-right: -100px;
+          }
+
+          & .pet-card__top {
+            height: 400px;
+          }
+
+          & .pet-card__price {
+            justify-content: end;
+            flex-direction: row-reverse;
+          }
+
+          & .pet-card__variation {
+            justify-content: end;
+            // flex-direction: row-reverse;
+          }
+
+          & .pet-card__rating {
+            justify-content: end;
+          }
+        }
+      }
+
+      @include laptop-min {
+        grid-template-columns: 1fr 1fr 0px 1fr 1fr;
+        // column-gap: 20px;
+        // row-gap: 50px;
+
+        & > a:nth-child(10n + 2) {
+          grid-column: unset;
+
+          display: grid;
+          grid-template-rows: auto 1fr;
+          grid-template-columns: 100%;
+          align-items: unset;
+
+          & .pet-card__top {
+            height: unset;
+          }
+
+          & .pet-card__bottom {
+            max-width: unset;
+            position: unset;
+            margin-left: unset;
+          }
+        }
+
+        & > a:nth-child(10n + 6) {
+          grid-column: unset;
+
+          display: grid;
+          grid-template-rows: auto 1fr;
+          grid-template-columns: 100%;
+
+          align-items: unset;
+          justify-items: unset;
+          text-align: unset;
+
+          & .pet-card__bottom {
+            max-width: unset;
+            position: unset;
+            margin-right: unset;
+          }
+
+          & .pet-card__top {
+            height: unset;
+          }
+
+          & .pet-card__price {
+            justify-content: unset;
+            flex-direction: row;
+          }
+
+          & .pet-card__variation {
+            justify-content: unset;
+            // flex-direction: row-reverse;
+          }
+
+          & .pet-card__rating {
+            justify-content: unset;
+          }
+        }
+
+        & > a:nth-child(42n + 3),
+        & > a:nth-child(42n + 13) {
+          grid-column: 4 / span 2;
+          // grid-column: 2 span;
+          grid-row: span 2;
+
+          & .pet-card__bottom {
+            margin-top: -76px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            padding-inline: 52px;
+          }
+
+          & .pet-card__name {
+            font-weight: 600;
+            font-size: 35px;
+            line-height: 1;
+          }
+
+          & .pet-card__price {
+            font-size: 25px;
+          }
+        }
+
+        & > a:nth-child(42n + 4),
+        & > a:nth-child(42n + 14) {
+          grid-column: 1 / span 2;
+          grid-row: span 2;
+
+          justify-items: end;
+          text-align: end;
+
+          & .pet-card__price {
+            justify-content: end;
+            flex-direction: row-reverse;
+          }
+
+          & .pet-card__variation {
+            justify-content: end;
+            // flex-direction: row-reverse;
+          }
+
+          & .pet-card__rating {
+            justify-content: end;
+          }
+
+          & .pet-card__bottom {
+            margin-top: -76px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            padding-inline: 52px;
+          }
+
+          & .pet-card__name {
+            font-weight: 600;
+            font-size: 35px;
+            line-height: 1;
+          }
+
+          & .pet-card__price {
+            font-size: 25px;
+          }
+
+          & .pet-card__layer-bottom {
+            left: 15px;
+            right: unset;
+          }
+        }
+
+        & > a:nth-child(42n + 5),
+        & > a:nth-child(42n + 15),
+        & > a:nth-child(42n + 26),
+        & > a:nth-child(42n + 37) {
+          grid-column: 4 / 5;
+        }
+
+        & > a:nth-child(42n + 9),
+        & > a:nth-child(42n + 19),
+        & > a:nth-child(42n + 23),
+        & > a:nth-child(42n + 30),
+        & > a:nth-child(42n + 41) {
+          grid-column: 4 / 5;
+        }
+
+        & > a:nth-child(42n + 25) {
+          grid-column: span 2;
+          // grid-row: 1 / 2;
+
+          display: flex;
+          flex-direction: row-reverse;
+          align-items: center;
+          justify-items: end;
+          text-align: end;
+
+          & .pet-card__bottom {
+            max-width: 200px;
+            position: relative;
+            margin-right: -157px;
+
+            gap: 25px;
+            display: flex;
+            flex-direction: column;
+          }
+
+          & .pet-card__top {
+            height: 505px;
+            width: 405px;
+          }
+
+          & .pet-card__price {
+            font-size: 25px;
+            justify-content: end;
+            flex-direction: row-reverse;
+          }
+
+          & .pet-card__variation {
+            justify-content: end;
+            // flex-direction: row-reverse;
+          }
+
+          & .pet-card__rating {
+            justify-content: end;
+          }
+
+          & .pet-card__name {
+            font-weight: 600;
+            font-size: 35px;
+            line-height: 1;
+          }
+        }
+
+        & > a:nth-child(42n + 34) {
+          grid-column: 4 / span 2;
+
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          & .pet-card__top {
+            height: 505px;
+            width: 405px;
+          }
+
+          & .pet-card__bottom {
+            max-width: 200px;
+            position: relative;
+            // margin-left: -117px;
+
+            margin-left: -157px;
+            gap: 25px;
+            display: flex;
+            flex-direction: column;
+          }
+        }
+
+        & > a:nth-child(42n + 1),
+        & > a:nth-child(42n + 2),
+        & > a:nth-child(42n + 7),
+        & > a:nth-child(42n + 8),
+        & > a:nth-child(42n + 11),
+        & > a:nth-child(42n + 12),
+        & > a:nth-child(42n + 17),
+        & > a:nth-child(42n + 18),
+        & > a:nth-child(42n + 21),
+        & > a:nth-child(42n + 22),
+        & > a:nth-child(42n + 28),
+        & > a:nth-child(42n + 29),
+        & > a:nth-child(42n + 32),
+        & > a:nth-child(42n + 33),
+        & > a:nth-child(42n + 35),
+        & > a:nth-child(42n + 36),
+        & > a:nth-child(42n + 39),
+        & > a:nth-child(42n + 40) {
+          justify-items: end;
+          text-align: end;
+          & .pet-card__price {
+            justify-content: end;
+            flex-direction: row-reverse;
+          }
+
+          & .pet-card__variation {
+            justify-content: end;
+            // flex-direction: row-reverse;
+          }
+
+          & .pet-card__rating {
+            justify-content: end;
+          }
+        }
+
+        @include desktop-min {
+          & > a:nth-child(42n + 25) {
+            & .pet-card__bottom {
+              max-width: 310px;
+
+              margin-right: -117px;
+              margin-right: 0; //можно убрать и будет как на зя
+            }
+
+            & .pet-card__top {
+              height: 505px;
+              width: 505px;
+            }
+          }
+
+          & > a:nth-child(42n + 34) {
+            & .pet-card__bottom {
+              max-width: 310px;
+
+              margin-left: -117px;
+            }
+
+            & .pet-card__top {
+              height: 505px;
+              width: 505px;
+            }
+          }
+        }
+      }
+
+      @include desktop-min {
+        // column-gap: 30px;
+        // row-gap: 60px;
+      }
+
+      @include widescreen-min {
+        // column-gap: 50px;
+        // row-gap: 96px;
+      }
+    }
+  }
+</style>

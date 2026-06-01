@@ -1,0 +1,44 @@
+---
+interface Props {
+  color: "pink" | "lime" | "yellow";
+  text: string;
+}
+
+const { color, text } = Astro.props;
+---
+
+<div class:list={["card-label", color && `card-label--${color}`]}>{text}</div>
+
+<style is:global lang="scss">
+  .card-label {
+    padding: 10px;
+
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 100%;
+    letter-spacing: 1.65px;
+    text-transform: lowercase;
+
+    &--pink {
+      color: var(--color-white);
+      background-color: var(--color-pink-400);
+    }
+
+    &--lime {
+      display: none;
+
+      @include laptop-min {
+        color: var(--color-slate-950);
+
+        background-color: var(--color-lime-300);
+        display: block;
+      }
+    }
+
+    &--yellow {
+      color: var(--color-slate-950);
+
+      background-color: var(--color-yellow-300);
+    }
+  }
+</style>

@@ -1,0 +1,314 @@
+---
+import CardLabel from "./CardLabel.astro";
+import Icon from "./Icon.astro";
+
+interface Props {
+  src: string;
+  sterilized?: boolean;
+  vaccinated?: boolean;
+
+  title: string;
+  age: string;
+}
+
+const { src, sterilized, vaccinated, title, age } = Astro.props;
+---
+
+<a href="pet-detail.html" class="pet-card">
+  <div class="pet-card__top">
+    <img {src} alt="" class="pet-card__image" loading="lazy" />
+    <div class="pet-card__layer">
+      <div class="pet-card__layer-top">
+        {vaccinated && <CardLabel text="Привит" color="yellow" />}
+
+        {sterilized && <CardLabel text="Стерилизован" color="pink" />}
+      </div>
+    </div>
+  </div>
+  <div class="pet-card__bottom">
+    <div class="pet-card__title">{age}</div>
+    <div class="pet-card__name">{title}</div>
+  </div>
+</a>
+
+<style is:global lang="scss">
+  .pet-card {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 100%;
+    gap: 20px;
+
+    cursor: pointer;
+
+    &:hover &__image {
+      opacity: 1;
+    }
+
+    &:hover &__bottom {
+      color: var(--color-pink-400);
+    }
+
+    &:hover &__variation {
+      &-item {
+        border-color: var(--color-pink-400);
+      }
+    }
+
+    &:hover &__price {
+      &-old {
+        color: var(--color-pink-400);
+
+        &::after {
+          background-color: var(--color-pink-400);
+        }
+      }
+    }
+
+    &:hover &__layer-bottom {
+      opacity: 1;
+    }
+    &__top {
+      display: grid;
+      background-color: #f2f2f2;
+      height: 250px;
+
+      @include phone-min {
+        aspect-ratio: 1;
+        height: unset;
+      }
+
+      @include laptop-min {
+        // height: 332px;
+      }
+    }
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      overflow: hidden;
+      grid-area: 1/1/-1/-1;
+      opacity: 0.8;
+      transition: opacity var(--transition);
+    }
+
+    &__layer {
+      grid-area: 1/1/-1/-1;
+
+      position: relative;
+      &-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        align-items: flex-start;
+
+        z-index: 0;
+        height: 33px;
+      }
+
+      &-web {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+
+        display: flex;
+        gap: 8px;
+        color: var(--color-slate-400);
+        font-size: 24px;
+
+        @include laptop-min {
+          top: 15px;
+          right: 15px;
+          gap: 15px;
+        }
+      }
+
+      &-bottom {
+        position: absolute;
+        right: 5px;
+        bottom: -24px;
+
+        transition: opacity var(--transition);
+
+        &--cart {
+          width: 48px;
+          height: 48px;
+          border-radius: 50px;
+          font-size: 24px;
+          line-height: 1;
+
+          background-color: var(--color-slate-950);
+          color: var(--color-slate-200);
+
+          &-active {
+            background-color: var(--color-pink-400);
+            color: var(--color-white);
+          }
+        }
+
+        @include laptop-min {
+          opacity: 0;
+          bottom: 15px;
+          right: 15px;
+
+          &:has(&--cart-active) {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    &__bottom {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: auto auto 1fr auto;
+      z-index: 2;
+
+      gap: 16px;
+
+      transition: color var(--transition);
+
+      @include laptop-min {
+        padding: unset;
+        grid-template-rows: auto auto auto 1fr auto;
+      }
+    }
+
+    &__variation {
+      transition: color var(--transition);
+
+      padding-inline: 15px;
+
+      display: flex;
+      gap: 5px;
+      &-item {
+        font-weight: 600;
+        font-size: 9px;
+        line-height: 100%;
+
+        padding: 6px;
+
+        border: 1px solid var(--color-slate-400);
+        border-radius: 11px;
+      }
+
+      @include laptop-min {
+        padding: unset;
+      }
+    }
+
+    &__title {
+      padding-inline: 15px;
+
+      font-weight: 600;
+      font-size: 11px;
+      line-height: 1;
+      letter-spacing: 1.65px;
+      transition: color var(--transition);
+
+      @include laptop-min {
+        padding: unset;
+      }
+    }
+
+    &__name {
+      padding-inline: 15px;
+
+      transition: color var(--transition);
+
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1;
+
+      @include laptop-min {
+        font-size: 20px;
+
+        padding: unset;
+      }
+    }
+
+    &__price {
+      padding-left: 15px;
+
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 100%;
+      transition: color var(--transition);
+      display: flex;
+      justify-content: start;
+      column-gap: 14px;
+      flex-wrap: wrap;
+
+      &-new {
+        text-wrap: nowrap;
+      }
+
+      &-old {
+        white-space: pre-wrap;
+        transition: color var(--transition);
+        text-wrap: nowrap;
+
+        color: var(--color-slate-400);
+
+        text-decoration: line-through;
+      }
+
+      @include laptop-min {
+        font-size: 20px;
+        padding: unset;
+      }
+    }
+
+    &__rating {
+      display: none;
+      // padding-inline: 15px;
+
+      @include laptop-min {
+        display: flex;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 1.4;
+
+        gap: 5px;
+        align-items: center;
+      }
+
+      &-cont {
+        display: flex;
+        gap: 5px;
+      }
+    }
+
+    &__star {
+      display: flex;
+      gap: 6px;
+
+      &-item {
+        &--one {
+          &:nth-child(n + 2) {
+            color: var(--color-slate-400);
+          }
+        }
+        &--two {
+          &:nth-child(n + 3) {
+            color: var(--color-slate-400);
+          }
+        }
+        &--three {
+          &:nth-child(n + 4) {
+            color: var(--color-slate-400);
+          }
+        }
+        &--four {
+          &:last-child {
+            color: var(--color-slate-400);
+          }
+        }
+        &--five {
+        }
+      }
+    }
+  }
+</style>
