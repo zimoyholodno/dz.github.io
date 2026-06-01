@@ -1,4 +1,5 @@
 ---
+import Button from "./button/Button.astro";
 import PetCard from "./PetCard.astro";
 import Section from "./Section.astro";
 
@@ -217,7 +218,6 @@ const list = [
 <style is:global lang="scss">
   .pet-grid {
     display: grid;
-
     &__button {
       display: grid;
       justify-items: center;
@@ -227,16 +227,15 @@ const list = [
 
       &-item {
         display: grid;
+        justify-items: center;
         width: 100%;
         padding-top: 50px;
 
         @include laptop-min {
           padding-top: 100px;
-          width: 226px;
         }
       }
     }
-
     &--linear {
       grid-template-columns: repeat(2, 1fr);
       column-gap: 15px;
