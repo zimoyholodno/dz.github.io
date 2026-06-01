@@ -1,0 +1,47 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<label class="radio-button">
+  <input type="radio" name="name" />
+  <span class="radio-button__circle"></span>
+  {text}
+</label>
+
+<style is:global lang="scss">
+  .radio-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked + .radio-button__circle {
+      color: black;
+      border: 1px solid black;
+
+      &::before {
+        content: url('data:image/svg+xml,<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="5.00001" cy="5.00016" r="4.16667" fill="%238B231D"/></svg>');
+        height: 27px;
+      }
+    }
+
+    &__circle {
+      border: 1px solid black;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+</style>

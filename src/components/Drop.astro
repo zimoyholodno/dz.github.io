@@ -1,0 +1,110 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends Omit<HTMLAttributes<"select">, "class"> {
+  /**
+   * Класс-селектор для кастомного JS
+   */
+  selector?: "js-drop";
+}
+
+const { selector = "js-drop", ...restProps } = Astro.props;
+---
+
+<select {...restProps} class:list={["drop", selector]}>
+  <slot />
+</select>
+
+<style is:global lang="scss">
+  $select-bg-color: #d1cece67 !default;
+  $select-bg-color-disabled: #eaeaea !default;
+  $select-primary-color: #005f75 !default;
+  $select-text-color: #333 !default;
+  $select-text-hover: #b17d7d !default;
+  .drop {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background-color: white;
+    color: #333;
+    transition: all var(--transition);
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::after {
+      content: url('data:image/svg+xml,<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.01176 4.84578C2.95451 4.78855 2.88716 4.74381 2.81357 4.71412C2.73997 4.68442 2.66157 4.67035 2.58284 4.6727C2.5041 4.67506 2.42658 4.6938 2.35469 4.72785C2.2828 4.7619 2.21795 4.81059 2.16385 4.87115C2.10975 4.93171 2.06746 5.00295 2.03939 5.0808C2.01132 5.15865 1.99801 5.24159 2.00024 5.32488C2.00247 5.40817 2.02018 5.49018 2.05237 5.56623C2.08456 5.64227 2.13059 5.71087 2.18784 5.7681L7.58467 11.1599C7.69601 11.2713 7.84341 11.3333 7.99663 11.3333C8.14985 11.3333 8.29725 11.2713 8.40859 11.1599L13.806 5.7681C13.8645 5.71125 13.9118 5.64267 13.945 5.56634C13.9782 5.49001 13.9968 5.40746 13.9996 5.32348C14.0024 5.2395 13.9895 5.15576 13.9614 5.07713C13.9334 4.9985 13.8909 4.92655 13.8363 4.86545C13.7818 4.80435 13.7163 4.75532 13.6437 4.72122C13.5711 4.68711 13.4928 4.66861 13.4134 4.66678C13.334 4.66495 13.255 4.67983 13.1811 4.71056C13.1071 4.74129 13.0397 4.78725 12.9827 4.84578L7.99663 9.82654L3.01176 4.84578Z" fill="%2379716B"/></svg>');
+      pointer-events: none;
+      width: 16px;
+      height: 18px;
+    }
+
+    &.is-open::after {
+      transform: rotate(180deg);
+    }
+
+    &.is-disabled {
+      background-color: $select-bg-color-disabled;
+      cursor: not-allowed;
+    }
+  }
+
+  .drop__list--dropdown {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 110%;
+
+    z-index: 10;
+    max-width: 360px;
+    right: 4px;
+    background-color: white;
+    box-shadow: 0px 10px 30px 0px rgba(74, 84, 98, 0.3);
+    &.is-active {
+      display: block;
+    }
+
+    .drop__item {
+      padding: 15px 20px;
+
+      &.is-highlighted {
+      }
+    }
+  }
+  .drop__list--single {
+    display: inline-block;
+    font-weight: 600;
+
+    & [dir="rtl"] & {
+      padding-right: 4px;
+      padding-left: 16px;
+    }
+    & .drop__item {
+      width: 100%;
+    }
+  }
+
+  .is-selected {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;
+  }
+  .drop__item {
+    &--selectable {
+      cursor: pointer;
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+</style>

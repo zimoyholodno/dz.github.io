@@ -1,0 +1,49 @@
+---
+import Icon from "@components/Icon.astro";
+
+interface Props {
+  /**
+   * Позиция иконки
+   *
+   * left = слева
+   * right = справа
+   */
+  position?: "left" | "right";
+}
+
+const { position = "right" } = Astro.props;
+---
+
+<button
+  class:list={["button-navigation", `button-navigation--${position}`]}
+  aria-label={`кнопка навигации ${position === "left" ? "назад" : "вперёд"}`}
+>
+  <Icon icon="chevron" class="button-navigation__icon" aria-hidden="true" />
+</button>
+
+<style is:global lang="scss">
+  .button-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    transition: var(--transition);
+
+    &:hover {
+      background-color: gray;
+      color: white;
+    }
+
+    &--left {
+      transform: rotate(180deg);
+    }
+
+    &__icon {
+      font-size: 16px;
+    }
+  }
+</style>

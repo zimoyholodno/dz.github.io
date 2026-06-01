@@ -1,0 +1,50 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  /**
+   * название drawer
+   */
+  name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<button class="burger" data-drawer-trigger={name} data-open="false">
+  <Icon icon="burger" class="burger__icon" />
+  <Icon icon="cross" class="burger__open" />
+</button>
+
+<style is:global lang="scss">
+  .burger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &__icon {
+      font-size: 24px;
+    }
+
+    &__open {
+      font-size: 24px;
+    }
+
+    &[data-open="false"] &__icon {
+      display: inline;
+    }
+
+    &[data-open="false"] &__open {
+      display: none;
+    }
+
+    &[data-open="true"] &__icon {
+      display: none;
+    }
+
+    &[data-open="true"] &__open {
+      display: inline;
+    }
+  }
+</style>

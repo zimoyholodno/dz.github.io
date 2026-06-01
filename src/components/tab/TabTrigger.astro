@@ -1,0 +1,32 @@
+---
+interface Props {}
+
+const {} = Astro.props;
+---
+
+<button class="tab-trigger">
+  <slot />
+</button>
+
+<style is:global lang="scss">
+  .tab-trigger {
+    cursor: pointer;
+    border: 1px solid gray;
+    transition: all var(--transition);
+    line-height: 1.2;
+    padding-block: 8px;
+    padding-inline: 16px;
+    border-radius: 8px;
+
+    &:hover {
+      background-color: gray;
+      color: white;
+    }
+
+    &[data-active="true"] {
+      border: 1px solid black;
+      background-color: black;
+      color: white;
+    }
+  }
+</style>

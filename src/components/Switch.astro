@@ -1,0 +1,162 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  checked?: boolean;
+
+  variant: "primary" | "secondary";
+  item?: string;
+  item_two?: string;
+}
+
+const { id, name, checked = false, variant, item, item_two } = Astro.props;
+---
+
+<label for={id} class:list={["switch", variant && `switch--${variant}`]}>
+  <input type="checkbox" class="switch__input" {name} {id} {checked} />
+  <span class="switch__slider">
+    {
+      variant === "secondary" && 
+      <span class="switch__label switch__label--one">{item}</span>
+      <span class="switch__label switch__label--two">{item_two}</span>
+    }
+  </span>
+</label>
+
+<style is:global lang="scss">
+  .switch {
+    &--primary {
+      width: 40px;
+      height: 24px;
+      display: inline-block;
+      cursor: pointer;
+      position: relative;
+
+      --_bg: #{var(--color-slate-200)};
+      --_t: #{var(--color-white)};
+      --_b: #{var(--color-slate-950)};
+    }
+    &--primary &__slider {
+      position: absolute;
+      inset: 0;
+      border-radius: 25px;
+      background-color: var(--_bg);
+      transition: all var(--transition);
+
+      &::before {
+        content: "";
+        position: absolute;
+        height: 24px;
+        width: 24px;
+        left: 0px;
+        top: 0px;
+        background-color: var(--_t);
+        transition: all var(--transition);
+        border-radius: 50%;
+        border: 1px solid var(--_b);
+      }
+    }
+
+    &--primary &__input {
+      display: none;
+    }
+
+    &__input:checked + &__slider {
+      --_bg: #{var(--color-slate-950)};
+      --_t: white;
+      --_b: #{var(--color-slate-950)};
+
+      &::before {
+        transform: translateX(12px);
+        left: 3px;
+      }
+    }
+
+    &--secondary {
+      --width: 274px;
+      --height: 54px;
+      --one-width: 133px;
+      --one-height: 46px;
+      --padding: 4px;
+
+      --bg-off: var(--color-slate-200);
+      --bg-on: var(--color-slate-200);
+      --one-color: var(--color-blue-500);
+      --text-off: var(--color-slate-400);
+      --text-on: var(--color-white);
+
+      width: var(--width);
+      height: var(--height);
+      display: inline-block;
+      cursor: pointer;
+      position: relative;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1;
+    }
+    &--secondary &__input {
+      display: none;
+    }
+
+    &--secondary &__slider {
+      position: absolute;
+      inset: 0;
+      border-radius: 32px;
+      background-color: var(--bg-off);
+      transition: background-color var(--transition);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--padding);
+    }
+
+    &--secondary &__label {
+      position: relative;
+      width: var(--one-width);
+      text-align: center;
+      transition: color var(--transition);
+
+      &--one {
+        color: var(--text-on);
+      }
+
+      &--two {
+        color: var(--text-off);
+      }
+    }
+
+    &--secondary &__slider::before {
+      content: "";
+      position: absolute;
+      height: var(--one-height);
+      width: var(--one-width);
+      left: var(--padding);
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: var(--one-color);
+      transition: transform var(--transition);
+      border-radius: 32px;
+      // z-index: 1;
+    }
+
+    &--secondary &__input:checked + &__slider {
+      background-color: var(--bg-on);
+
+      &::before {
+        transform: translate(
+          calc(var(--width) - var(--one-width) - 2 * var(--padding)),
+          -50%
+        );
+      }
+
+      .switch__label--man {
+        color: var(--text-off);
+      }
+
+      .switch__label--woman {
+        color: var(--text-on);
+      }
+    }
+  }
+</style>

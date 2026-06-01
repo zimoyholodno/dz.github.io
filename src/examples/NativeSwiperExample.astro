@@ -1,0 +1,87 @@
+---
+interface Props {}
+
+const {} = Astro.props;
+
+const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+---
+
+<div class="native-swiper">
+  <div class="native-swiper__container">
+    {items.map((item) => <div class="h-80 bg-amber-300">{item}</div>)}
+  </div>
+</div>
+<style is:global lang="scss">
+  .native-swiper {
+    @include section;
+    padding-bottom: 60px;
+
+    @include laptop-min {
+      padding-bottom: 120px;
+    }
+
+    &__container {
+      overflow: auto;
+      grid-area: full;
+      display: flex;
+      gap: 15px;
+      scrollbar-width: none;
+      padding-right: var(--container-padding);
+      scroll-snap-type: x mandatory;
+
+      @include tablet-min {
+        overflow: unset;
+        grid-area: center;
+        display: grid;
+        scrollbar-width: unset;
+        padding-right: unset;
+        scroll-snap-type: unset;
+        justify-content: center;
+        grid-template-columns: repeat(auto-fill, 304px);
+        gap: 30px;
+      }
+
+      & > * {
+        scroll-snap-align: center;
+        flex-basis: 250px;
+        flex-shrink: 0;
+
+        @include tablet-min {
+          scroll-snap-align: unset;
+          flex-basis: unset;
+          flex-shrink: unset;
+        }
+      }
+
+      & > *:first-child {
+        scroll-margin-left: var(--container-offset);
+        margin-left: var(--container-offset);
+
+        @include tablet-min {
+          scroll-margin-left: unset;
+          margin-left: unset;
+        }
+      }
+
+      & > *:last-child {
+        scroll-margin-right: var(--container-offset);
+        margin-right: var(--container-offset);
+
+        @include tablet-min {
+          scroll-margin-right: unset;
+          margin-right: unset;
+        }
+      }
+
+      &--actions {
+        @include tablet-min {
+          grid-template-columns: repeat(auto-fill, 348px);
+        }
+
+        @include laptop-min {
+          grid-template-columns: repeat(auto-fill, 415px);
+        }
+      }
+    }
+  }
+</style>

@@ -1,0 +1,27 @@
+---
+import Tab from "@components/tab/Tab.astro";
+import TabContent from "@components/tab/TabContent.astro";
+import type { ComponentProps } from "astro/types";
+
+interface Props {
+  mobile: ComponentProps<typeof Tab>["mobile"];
+}
+
+const { mobile } = Astro.props;
+---
+
+<Tab mobile={mobile} items={["title 1", "title 2", "title 3"]}>
+  <TabContent>
+    <p>content 1</p>
+  </TabContent>
+  <TabContent>
+    <p>content 2</p>
+  </TabContent>
+  <TabContent>
+    <p>content 3</p>
+  </TabContent>
+</Tab>
+
+<script>
+  import "@lib/tab";
+</script>

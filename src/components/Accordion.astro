@@ -1,0 +1,136 @@
+---
+import Icon from "@components/Icon.astro";
+
+interface Props {
+  variant?: "plus" | "chevron";
+  items?: { title: string; content: string }[];
+}
+const { items, variant = "chevron" } = Astro.props;
+---
+
+<div class:list={["accordion", `accordion--${variant}`]}>
+  {
+    items?.map(({ title, content }) => (
+      <div class="accordion__item">
+        <div class="accordion__trigger">
+          <p class="accordion__title">{title}</p>
+          <div class="accordion__indicator">
+            <Icon icon={`accordion-${variant}`} class="accordion__icon" />
+          </div>
+        </div>
+        <div class="accordion__panel">
+          <div class="accordion__content">{content}</div>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<style is:global lang="scss">
+  .accordion {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    &__item {
+      width: 100%;
+      background-color: white;
+      border: 1px solid gray;
+      border-radius: 8px;
+      transition: all var(--transition);
+    }
+
+    &__item--active {
+      background-color: darkgray;
+    }
+
+    &__trigger {
+      display: flex;
+      gap: 8px;
+      justify-content: space-between;
+      padding-block: 16px;
+      padding-inline: 16px;
+      position: relative;
+      cursor: pointer;
+      align-items: center;
+    }
+
+    &__title {
+      line-height: 1.2;
+    }
+
+    &__indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+      aspect-ratio: 1;
+    }
+
+    &__icon {
+      transition: all var(--transition);
+      line-height: 1;
+    }
+
+    &__content {
+      width: 100%;
+      padding-inline: 16px;
+      padding-bottom: 16px;
+    }
+
+    &__item {
+      margin-bottom: unset;
+    }
+
+    &__item &__panel {
+      overflow: hidden;
+      transition-property: height, visibility;
+      transition-timing-function: ease;
+    }
+
+    & .js-enabled &__panel {
+      visibility: hidden;
+    }
+
+    & &__item--active &__panel {
+      visibility: visible;
+    }
+
+    /* chevron */
+
+    &--chevron &__icon {
+      color: gray;
+      font-size: 16px;
+    }
+
+    &--chevron &__item--active &__icon {
+      transform: rotate(180deg);
+      color: black;
+    }
+
+    /* plus */
+
+    &--plus &__indicator {
+      width: 32px;
+      height: 32px;
+      border-radius: 9999px;
+      background-color: gray;
+    }
+
+    &--plus &__item--active &__indicator {
+      background-color: black;
+      transform: rotate(45deg);
+    }
+
+    &--plus &__icon {
+      color: white;
+      font-size: 12px;
+      padding-left: 1px;
+    }
+
+    &--plus &__item--active &__icon {
+      color: white;
+      padding-left: 0px;
+    }
+  }
+</style>

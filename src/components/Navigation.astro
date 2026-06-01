@@ -1,0 +1,81 @@
+---
+interface Props {}
+
+const {} = Astro.props;
+
+const list: { href: string; name: string }[] = [
+  { href: "/company.html", name: "о компании" },
+  { href: "/brand.html", name: "бренды" },
+  { href: "/stock.html", name: "акции" },
+  { href: "/delivery.html", name: "доставка и оплата" },
+  { href: "/guarantees.html", name: "гарантия" },
+  { href: "/blog.html", name: "блог" },
+  { href: "/contact.html", name: "контакты" },
+];
+---
+
+<div class="navigation">
+  {
+    list.map(({ href, name }) => (
+      <a {href} class="navigation__item">
+        {name}
+      </a>
+    ))
+  }
+</div>
+
+<style is:global lang="scss">
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 29px;
+    font-weight: 600;
+    line-height: 1;
+    font-size: 20px;
+
+    transition: all var(--transition);
+
+    &__item {
+      transition: all var(--transition);
+      @include laptop-min {
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+    }
+    @include laptop-min {
+      // padding-block: 17px;
+      flex-direction: row;
+
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+
+      font-weight: 400;
+      font-size: 16px;
+
+      height: 100%;
+    }
+
+    @include desktop-min {
+      gap: 51px;
+    }
+
+    @include laptop-min {
+      &__item:hover {
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -1px;
+          right: 0;
+
+          height: 2px;
+          width: 100%;
+          background-color: var(--color-slate-950);
+        }
+      }
+    }
+  }
+</style>

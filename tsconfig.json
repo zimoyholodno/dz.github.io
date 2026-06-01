@@ -1,0 +1,21 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*", "src/**/*.svelte"],
+  "exclude": ["dist", "**/*.stories.tsx", "**/*.stories.ts"],
+  "compilerOptions": {
+    "allowJs": true,
+    "moduleDetection": "force",
+    "typeRoots": ["./node_modules/@types"],
+    "baseUrl": ".",
+    "paths": {
+      "ymaps3": ["./node_modules/@yandex/ymaps3-types"],
+      "@components/*": ["src/components/*"],
+      "@lib/*": ["src/scripts/lib/*"],
+      "@svelte/*": ["src/scripts/svelte/*"],
+      "@type/*": ["src/scripts/types/*"],
+      "@utils/*": ["src/scripts/utils/*"]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
+}

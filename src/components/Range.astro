@@ -1,0 +1,137 @@
+---
+interface Props {
+  min: number;
+  max: number;
+  start: number;
+  end: number;
+  text: string;
+}
+
+const { min, max, start, end, text } = Astro.props;
+---
+
+<div
+  class="range"
+  data-min={min}
+  data-max={max}
+  data-start={start}
+  data-end={end}
+>
+  <div class="range__fields">
+    <div class="range__field">
+      <input type="text" class="range__input range__from" />
+      <div class="range__ruble" data-text={text}></div>
+    </div>
+    <div class="range__field">
+      <input type="text" class="range__input range__to" />
+      <div class="range__ruble" data-text={text}></div>
+    </div>
+  </div>
+  <div class="range__element"></div>
+</div>
+
+<style is:global lang="scss">
+  .range {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include laptop-min {
+      padding-inline: 35px;
+    }
+
+    &__range {
+      position: relative;
+      height: 14px;
+    }
+
+    &__element {
+      cursor: pointer;
+      &.noUi-target {
+        height: 2px;
+        width: 100%;
+        background-color: var(--color-slate-200);
+        border: unset;
+        box-shadow: unset;
+      }
+
+      & .noUi-handle {
+        cursor: pointer;
+        background-color: var(--color-white);
+
+        border: 2px solid var(--color-slate-950);
+        box-shadow: unset;
+        width: 22px;
+        height: 22px;
+        border-radius: 999px;
+        top: -13px;
+
+        &::before,
+        &::after {
+          content: unset;
+        }
+      }
+
+      & .noUi-connect {
+        background-color: var(--color-slate-950);
+      }
+
+      & .noUi-connect,
+      & .noUi-origin {
+        right: 17px;
+        width: calc(100% - 20px);
+      }
+    }
+
+    &__fields {
+      position: relative;
+
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__field {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: 100%;
+    }
+
+    &__input {
+      grid-area: 1/1/-1/-1;
+      width: 100%;
+      -webkit-appearance: none;
+      -moz-appearance: textfield;
+      border-radius: 30px;
+
+      background-color: var(--color-slate-200);
+      padding: 10px;
+
+      font-size: 14px;
+      font-weight: 600;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &:focus,
+      &:focus-visible {
+        outline: unset;
+      }
+    }
+
+    &__ruble {
+      grid-area: 1/1/-1/-1;
+      justify-self: end;
+      align-self: center;
+      margin-right: 16px;
+      color: gray;
+      font-weight: 500;
+
+      &::after {
+        content: attr(data-text);
+      }
+    }
+  }
+</style>

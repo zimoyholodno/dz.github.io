@@ -1,0 +1,61 @@
+---
+import TabTrigger from "@components/tab/TabTrigger.astro";
+
+interface Props {
+  items: string[];
+  open?: number;
+  /**
+   * скролл табов на мобилке
+   */
+  mobile?: "scroll" | "wrap";
+}
+
+const { items, open = 1, mobile = "wrap" } = Astro.props;
+---
+
+<div class:list={["tab"]} data-open={open}>
+  <div class:list={["tab__list", `tab__list--${mobile}`]}>
+    {items.map((tab) => <TabTrigger>{tab}</TabTrigger>)}
+  </div>
+
+  <div class="tab__container">
+    <slot />
+  </div>
+</div>
+
+<style is:global lang="scss">
+  .tab {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__list {
+      &--wrap {
+        gap: 8px;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: auto;
+
+        @include laptop-min {
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+
+      &--scroll {
+        gap: 8px;
+        display: flex;
+        padding-inline: var(--container-offset);
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        text-wrap: nowrap;
+
+        @include laptop-min {
+          flex-wrap: wrap;
+          overflow-x: unset;
+          text-wrap: unset;
+        }
+      }
+    }
+  }
+</style>

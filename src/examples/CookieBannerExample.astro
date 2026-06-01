@@ -1,0 +1,24 @@
+---
+import CookieBanner from "@components/CookieBanner.astro";
+---
+
+<CookieBanner />
+
+<button id="clear-cookie" class="cursor-pointer bg-black p-2 text-white"
+  >Показать cookie banner</button
+>
+
+<script>
+  import { initCookieBanner } from "@lib/init-cookie-banner";
+
+  initCookieBanner(".cookie-banner");
+
+  const clearCookie = () => {
+    localStorage.removeItem("cookieAccepted");
+    sessionStorage.removeItem("cookieAccepted");
+    window.location.reload();
+  };
+
+  const clearCookieButton = document.getElementById("clear-cookie");
+  clearCookieButton?.addEventListener("click", clearCookie);
+</script>

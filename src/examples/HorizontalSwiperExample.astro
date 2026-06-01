@@ -1,0 +1,118 @@
+---
+import ButtonNavigation from "@components/button-navigation/ButtonNavigation.astro";
+import Section from "@components/Section.astro";
+
+interface Props {}
+
+const {} = Astro.props;
+
+const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+---
+
+<Section position="full">
+  <div class="horizontal-swiper__swiper swiper">
+    <div class="horizontal-swiper__navigation">
+      <div class="horizontal-swiper__navigation-prev">
+        <ButtonNavigation position="left" />
+      </div>
+      <div class="horizontal-swiper__navigation-next">
+        <ButtonNavigation position="right" />
+      </div>
+    </div>
+    <div class="horizontal-swiper__wrapper swiper-wrapper">
+      {
+        items.map((item) => (
+          <div class="horizontal-swiper__slide swiper-slide">{item}</div>
+        ))
+      }
+    </div>
+    <div class="horizontal-swiper__pagination"></div>
+  </div>
+</Section>
+
+<style is:global lang="scss">
+  .horizontal-swiper {
+    &__swiper {
+      width: 100%;
+      height: fit-content;
+    }
+
+    &__wrapper {
+      display: flex;
+    }
+
+    &__slide {
+      height: 100px;
+      width: 200px;
+      background-color: aquamarine;
+    }
+
+    &__pagination {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    &__bullet {
+      width: 10px;
+      height: 10px;
+      background-color: gainsboro;
+      border-radius: 9999px;
+      cursor: pointer;
+
+      &-active {
+        background-color: black;
+      }
+    }
+
+    &__navigation {
+      display: none;
+
+      @include laptop-min {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+</style>
+
+<script>
+  import { getSectionOffset } from "@utils/section";
+  import Swiper from "swiper";
+  import { Navigation, Pagination } from "swiper/modules";
+  import type { SwiperOptions } from "swiper/types";
+
+  const swiperOptions: SwiperOptions = {
+    modules: [Navigation, Pagination],
+    spaceBetween: 10,
+    slidesPerView: "auto",
+    loop: false,
+    slidesOffsetBefore: getSectionOffset(".horizontal-swiper__swiper"),
+    slidesOffsetAfter: 10,
+
+    pagination: {
+      el: ".horizontal-swiper__pagination",
+      clickable: true,
+      bulletClass: "horizontal-swiper__bullet",
+      bulletActiveClass: "horizontal-swiper__bullet-active",
+    },
+
+    navigation: {
+      prevEl: ".horizontal-swiper__navigation-prev",
+      nextEl: ".horizontal-swiper__navigation-next",
+    },
+  };
+
+  const swiper = new Swiper(".horizontal-swiper__swiper", swiperOptions);
+
+  window.addEventListener("resize", () => {
+    swiper.params.slidesOffsetBefore = getSectionOffset(
+      ".horizontal-swiper__swiper"
+    );
+  });
+</script>

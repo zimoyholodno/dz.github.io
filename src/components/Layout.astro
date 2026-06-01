@@ -1,0 +1,117 @@
+---
+import choices from "choices.js/public/assets/styles/choices.min.css?url";
+import swiper from "swiper/swiper-bundle.css?url";
+import tippy from "tippy.js/dist/tippy.css?url";
+import datepicker from "vanilla-calendar-pro/styles/index.css?url";
+import lightgallery from "lightgallery/css/lightgallery-bundle.min.css?url";
+import nouislider from "nouislider/dist/nouislider.min.css?url";
+
+import "../styles/global.css";
+
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+import CookieBanner from "./CookieBanner.astro";
+
+interface Props {
+  /**
+   * title в head
+   */
+  title: string;
+  /**
+   * Названия скриптов из папки src/scripts/entity
+   *
+   * Скрипт general уже подключен
+   */
+  scripts?: string[];
+  /**
+   * Подключение Яндекс.Карты
+   */
+  ymap?: boolean;
+  theme?: "dark" | "light";
+}
+
+const { title, scripts, ymap, theme } = Astro.props;
+
+const version = String(Date.now()).substring(5);
+
+const isProd = import.meta.env.PROD;
+const isDev = import.meta.env.DEV;
+
+const ymapSrc = `https://api-maps.yandex.ru/v3/?apikey=${import.meta.env.PUBLIC_YMAP_API_KEY}&lang=ru_RU`;
+const generalSrc = `/js/general.js?v=0.${version}`;
+const scriptsStc = scripts?.map((s) => `/js/${s}.js?v=0.${version}`);
+
+/**
+ * Подключение стилей библиотек
+ */
+const styles: string[] = [
+  // choices,
+  // tippy,
+  // datepicker,
+  // glide,
+  // lightgallery,
+  // nouislider,
+];
+---
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {styles.map((style) => <link rel="stylesheet" href={style} />)}
+    <link rel="stylesheet" href={`/fonts/icons/icons.css?v=0.${version}`} />
+    {ymap && <script is:inline src={ymapSrc} defer />}
+    {isProd && <script is:inline type="module" src={generalSrc} />}
+    {
+      isProd &&
+        scriptsStc?.map((s) => <script is:inline type="module" src={s} />)
+    }
+  </head>
+  <body>
+    <Header {theme} />
+    <main class="main">
+      <slot />
+    </main>
+    <Footer />
+    <CookieBanner />
+  </body>
+</html>
+
+{isDev ? <script src="../scripts/dev.ts" /> : null}
+
+<style is:global lang="scss">
+  // Вариативный шрифт
+  @font-face {
+    font-family: "Inter";
+    src: url("../fonts/inter-variable.ttf") format("truetype-variations");
+    font-weight: 100 900;
+  }
+
+  // Обычный шрифт
+  // @font-face {
+  //   font-family: "Vela Sans";
+  //   src: url("../fonts/VelaSans-ExtraLight.ttf") format("truetype");
+  //   font-weight: 200;
+  //   font-style: normal;
+  //   font-display: swap;
+  // }
+
+  html {
+    height: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Inter";
+  }
+
+  .main {
+    flex-grow: 1;
+  }
+</style>

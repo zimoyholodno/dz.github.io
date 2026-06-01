@@ -1,0 +1,192 @@
+---
+type Positions = "left" | "center" | "right" | "full";
+
+interface Props {
+  /**
+   * Позиция дочернего элемента начиная с минимальной ширины экрана
+   *
+   * @default center
+   */
+  position?: Positions;
+
+  /**
+   * Позиция дочернего элемента начиная с phone
+   */
+  phone?: Positions;
+
+  /**
+   * Позиция дочернего элемента начиная с tablet
+   */
+  tablet?: Positions;
+
+  /**
+   * Позиция дочернего элемента начиная с laptop
+   */
+  laptop?: Positions;
+
+  /**
+   * Позиция дочернего элемента начиная с desktop
+   */
+  desktop?: Positions;
+
+  /**
+   * Позиция дочернего элемента начиная с widescreen
+   */
+  widescreen?: Positions;
+
+  /**
+   * Верхний отступ (редактируемый)
+   */
+  top?: "small" | "medium" | "large";
+
+  /**
+   * Нижний отступ (редактируемый)
+   */
+  bottom?: "small" | "medium" | "large";
+}
+
+const {
+  position = "center",
+  widescreen,
+  desktop,
+  laptop,
+  tablet,
+  phone,
+  bottom,
+  top,
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    "section",
+    `section--${position}`,
+    widescreen && `section--widescreen-${desktop}`,
+    desktop && `section--desktop-${desktop}`,
+    laptop && `section--laptop-${laptop}`,
+    tablet && `section--tablet-${tablet}`,
+    phone && `section--phone-${phone}`,
+    bottom && `section--bottom-${bottom}`,
+    top && `section--top-${top}`,
+  ]}
+>
+  <div class="section__container">
+    <slot />
+  </div>
+</div>
+
+<style is:global lang="scss">
+  .section {
+    @include section;
+
+    $positions: "left", "center", "right", "full";
+
+    @each $position in $positions {
+      &--#{$position} {
+        --section-position: #{$position};
+      }
+    }
+
+    @each $position in $positions {
+      @include phone-min {
+        &--phone-#{$position} {
+          --section-position: #{$position};
+        }
+      }
+    }
+
+    @each $position in $positions {
+      @include tablet-min {
+        &--tablet-#{$position} {
+          --section-position: #{$position};
+        }
+      }
+    }
+
+    @each $position in $positions {
+      @include laptop-min {
+        &--laptop-#{$position} {
+          --section-position: #{$position};
+        }
+      }
+    }
+
+    @each $position in $positions {
+      @include desktop-min {
+        &--desktop-#{$position} {
+          --section-position: #{$position};
+        }
+      }
+    }
+
+    @each $position in $positions {
+      @include widescreen-min {
+        &--widescreen-#{$position} {
+          --section-position: #{$position};
+        }
+      }
+    }
+
+    &__container {
+      display: grid;
+      grid-area: var(--section-position);
+      grid-template-columns: 100%;
+    }
+
+    &--top {
+      &-small {
+        padding-top: 20px;
+      }
+
+      &-medium {
+        padding-top: 20px;
+      }
+
+      &-large {
+        padding-top: 20px;
+      }
+
+      @include laptop-min {
+        &-small {
+          padding-top: 40px;
+        }
+
+        &-medium {
+          padding-top: 50px;
+        }
+
+        &-large {
+          padding-top: 60px;
+        }
+      }
+    }
+
+    &--bottom {
+      &-small {
+        padding-bottom: 60px;
+      }
+
+      &-medium {
+        padding-bottom: 60px;
+      }
+
+      &-large {
+        padding-bottom: 60px;
+      }
+
+      @include laptop-min {
+        &-small {
+          padding-bottom: 90px;
+        }
+
+        &-medium {
+          padding-bottom: 120px;
+        }
+
+        &-large {
+          padding-bottom: 150px;
+        }
+      }
+    }
+  }
+</style>

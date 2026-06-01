@@ -1,0 +1,59 @@
+---
+import Button from "@components/button/Button.astro";
+import Field from "@components/Field.astro";
+import Input from "@components/Input.astro";
+import Modal from "@components/Modal.astro";
+
+let a = 1;
+let b: number = 1;
+---
+
+<Button variant="black" size="small" modal="modal-example"
+  >Открыть модалку</Button
+>
+<span class={"hello goodbye " + (a ? "hello" : "") + ` ${b ? "world" : ""}`}
+></span>
+
+<Modal width="small" id="modal-example">
+  <form class="grid gap-4 pt-8" id="modal-example-form">
+    <Field label="Имя">
+      <Input name="name" id="name" />
+    </Field>
+    <Field label="Email">
+      <Input name="email" id="email" type="email" />
+    </Field>
+    <Field label="Телефон">
+      <Input name="phone" id="phone" />
+    </Field>
+    <Field label="Сообщение">
+      <Input name="message" id="message" />
+    </Field>
+    <Button variant="black" size="small" type="submit">Отправить</Button>
+  </form>
+</Modal>
+
+<Modal width="small" id="modal-example-success">
+  <p>Форма отправлена</p>
+</Modal>
+
+<script>
+  import MicroModal from "micromodal";
+
+  MicroModal.init({
+    awaitCloseAnimation: true,
+    disableScroll: true,
+  });
+
+  const form = document.querySelector("#modal-example-form");
+  if (form instanceof HTMLFormElement) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      MicroModal.close("modal-example");
+
+      setTimeout(() => {
+        MicroModal.show("modal-example-success");
+      }, 500);
+    });
+  }
+</script>

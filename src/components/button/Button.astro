@@ -1,0 +1,105 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends Omit<HTMLAttributes<"button">, "class"> {
+  /**
+   * Если указать ссылку, то будет тег <а>, иначе <button>
+   */
+  href?: string;
+  /**
+   * Вариации цветов
+   */
+  variant: "black" | "white";
+  /**
+   * Вариации размеров
+   */
+  size: "small" | "medium";
+
+  /**
+   * Вариации шрифта
+   */
+  font?: "small" | "medium";
+
+  /**
+   * id модального окна
+   */
+  modal?: string;
+}
+
+const { href, variant, modal, size, font, ...restProps } = Astro.props;
+
+const Element = href ? "a" : "button";
+---
+
+<Element
+  {...restProps}
+  data-micromodal-trigger={modal}
+  href={href}
+  class:list={[
+    "button",
+    `button--variant-${variant}`,
+    `button--size-${size}`,
+    font && `button--font-${font}`,
+  ]}
+>
+  <slot>Click me!</slot>
+</Element>
+
+<style is:global lang="scss">
+  .button {
+    background-color: black;
+    color: white;
+    transition: all var(--transition);
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+
+    &--variant {
+      &-black {
+        color: white;
+        background-color: black;
+
+        &:hover {
+          background-color: gray;
+        }
+      }
+
+      &-white {
+        color: black;
+        background-color: white;
+        border: 1px solid black;
+
+        &:hover {
+          background-color: gray;
+        }
+      }
+    }
+
+    &--size {
+      &-small {
+        min-height: 42px;
+        padding-inline: 20px;
+      }
+
+      &-medium {
+        min-height: 56px;
+        padding-inline: 20px;
+      }
+    }
+
+    &--font {
+      &-small {
+        font-weight: 500;
+        font-size: 14px;
+      }
+
+      &-medium {
+        font-weight: 600;
+        font-size: 16px;
+      }
+    }
+  }
+</style>

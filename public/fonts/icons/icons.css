@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "icons";
+  src: url('icons.eot?t=1780329527726'); /* IE9*/
+  src: url('icons.eot?t=1780329527726#iefix') format('embedded-opentype') /* IE6-IE8 */,
+  url('icons.woff2?t=1780329527726') format('woff2'),
+  url('icons.woff?t=1780329527726') format('woff'),
+  url('icons.ttf?t=1780329527726') format('truetype'),
+  url('icons.svg?t=1780329527726') format('svg');
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icons' !important;font-size: undefined;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-acc::before { content: "\ea01"; }
+.icon-arrow-down::before { content: "\ea02"; }
+.icon-attachment::before { content: "\ea03"; }
+.icon-burger::before { content: "\ea04"; }
+.icon-call::before { content: "\ea05"; }
+.icon-chart-fill::before { content: "\ea06"; }
+.icon-chart::before { content: "\ea07"; }
+.icon-check::before { content: "\ea08"; }
+.icon-chevron::before { content: "\ea09"; }
+.icon-clear::before { content: "\ea0a"; }
+.icon-close-circle::before { content: "\ea0b"; }
+.icon-cross::before { content: "\ea0c"; }
+.icon-delete::before { content: "\ea0d"; }
+.icon-eye::before { content: "\ea0e"; }
+.icon-filter::before { content: "\ea0f"; }
+.icon-flex::before { content: "\ea10"; }
+.icon-grid::before { content: "\ea11"; }
+.icon-like-fill::before { content: "\ea12"; }
+.icon-like::before { content: "\ea13"; }
+.icon-line::before { content: "\ea14"; }
+.icon-location::before { content: "\ea15"; }
+.icon-logo-header::before { content: "\ea16"; }
+.icon-logo::before { content: "\ea17"; }
+.icon-mail::before { content: "\ea18"; }
+.icon-minus::before { content: "\ea19"; }
+.icon-next::before { content: "\ea1a"; }
+.icon-phone::before { content: "\ea1b"; }
+.icon-plus::before { content: "\ea1c"; }
+.icon-search::before { content: "\ea1d"; }
+.icon-star::before { content: "\ea1e"; }
+.icon-store::before { content: "\ea1f"; }
+.icon-telegram::before { content: "\ea20"; }
+.icon-tick-circle::before { content: "\ea21"; }
+.icon-vk::before { content: "\ea22"; }
+.icon-whatsapp::before { content: "\ea23"; }
+
+

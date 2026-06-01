@@ -1,0 +1,26 @@
+---
+interface Props {}
+
+const {} = Astro.props;
+---
+
+<div class="tab-content">
+  <slot />
+</div>
+
+<style is:global lang="scss">
+  .tab-content {
+    display: none;
+    opacity: 0;
+    transition: var(--transition);
+
+    &[data-active="true"] {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &[data-opacity="true"] {
+      opacity: 1;
+    }
+  }
+</style>
