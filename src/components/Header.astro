@@ -1,6 +1,7 @@
 ---
 import Burger from "./Burger.astro";
 import Button from "./button/Button.astro";
+import Navigation from "./Navigation.astro";
 import Drawer from "./Drawer.astro";
 import Icon from "./Icon.astro";
 
@@ -17,7 +18,7 @@ const mobileMenuTrigger = "mobile-menu";
   <div class="header__container">
     <div class="header__desktop">
       <a href="/index.html" class="header__logo">
-        <Icon icon="logo-header" class="header__logo-img" />
+        <Icon icon="logo" class="header__logo-img" />
       </a>
 
       <div class="header__navigation">
@@ -57,8 +58,9 @@ const mobileMenuTrigger = "mobile-menu";
 
     &__container {
       @include section;
-      transition: all var(--transition);
-
+      transition: var(--transition);
+      transition-property:
+        background-color, color, padding-block, border-bottom;
       position: fixed;
       top: 0;
       left: 0;
@@ -87,6 +89,8 @@ const mobileMenuTrigger = "mobile-menu";
       @include laptop-min {
         // padding-top: 20px;
         display: grid;
+        transition: var(--transition);
+        transition-property: gap;
         gap: 10px;
       }
     }
@@ -134,32 +138,6 @@ const mobileMenuTrigger = "mobile-menu";
       }
     }
 
-    &__content {
-      @include laptop-min {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-    }
-
-    &__select {
-      // color: var(--color-slate-950);
-      // color:;
-
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      // padding-right: 163px;
-      transition: all var(--transition);
-
-      &:hover {
-        color: var(--color-pink-400);
-      }
-    }
-
     &__logo {
       justify-self: center;
       font-size: 42px;
@@ -169,7 +147,8 @@ const mobileMenuTrigger = "mobile-menu";
       display: flex;
       align-items: center;
 
-      transition: all var(--transition);
+      transition: var(--transition);
+      transition-property: color, transform;
     }
 
     &__logo:hover {
@@ -178,7 +157,8 @@ const mobileMenuTrigger = "mobile-menu";
 
     &__navigation {
       display: none;
-      transition: all var(--transition);
+      transition: var(--transition);
+      transition-property: opacity, height, visibility, transform;
       height: 50px;
 
       @include laptop-min {

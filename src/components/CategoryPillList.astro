@@ -1,0 +1,59 @@
+---
+import Section from "./Section.astro";
+import CategoryPill from "./CategoryPill.astro";
+
+interface Props {}
+
+const {} = Astro.props;
+
+const list: { src: string; name: string }[] = [
+  { src: "img/category/one.png", name: "собаки" },
+  { src: "img/category/two.png", name: "кошки" },
+  { src: "img/category/three.png", name: "щенки и котята" },
+  { src: "img/category/four.png", name: "грызуны" },
+  { src: "img/category/five.png", name: "животные с особенностями" },
+  // { src: "img/category/six.png", name: "стерилизованные питомцы" },
+  // { src: "img/category/seven.png", name: "привитые животные" },
+];
+---
+
+<Section top="small" border="bottom" position="full" laptop="center">
+  <div class="category-pill-list">
+    <div class="category-pill-list__container">
+      {list.map(({ src, name }) => <CategoryPill {src} {name} />)}
+    </div>
+  </div>
+</Section>
+
+<style is:global lang="scss">
+  .category-pill-list {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 20px;
+
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    overflow: auto;
+    // margin-left: var(--container-offset);
+
+    @include laptop-min {
+      padding-bottom: 30px;
+    }
+
+    @include laptop-min {
+      margin-left: unset;
+    }
+
+    &__container {
+      width: 100%;
+
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+
+      @include laptop-min {
+        gap: 15px;
+      }
+    }
+  }
+</style>

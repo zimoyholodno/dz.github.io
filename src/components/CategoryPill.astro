@@ -1,0 +1,92 @@
+---
+interface Props {
+  src: string;
+  name: string;
+}
+
+const { src, name } = Astro.props;
+---
+
+<div class="category-pill">
+  <div class="category-pill__image">
+    <img {src} alt="pets" loading="lazy" class="category-pill__img" />
+  </div>
+  <span>{name}</span>
+</div>
+
+<style is:global lang="scss">
+  .category-pill {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+
+    cursor: pointer;
+
+    padding-right: 23px;
+
+    gap: 4px;
+    position: relative;
+
+    border: 1px solid var(--color-slate-200);
+    border-radius: 40px;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.2;
+
+    transition: var(--transition);
+    transition-property: color, border-color, opacity;
+    opacity: 0.7;
+
+    @include laptop-min {
+      padding-right: 20px;
+      font-size: 16px;
+      gap: 15px;
+    }
+
+    &:hover {
+      color: var(--color-pink-400);
+      border-color: var(--color-pink-400);
+      opacity: 1;
+    }
+
+    &:first-child {
+      margin-left: var(--container-offset);
+
+      @include laptop-min {
+        margin-left: unset;
+      }
+    }
+
+    &:last-child {
+      margin-right: var(--container-offset);
+      @include laptop-min {
+        margin-right: unset;
+      }
+    }
+
+    &__image {
+      width: 60px;
+      height: 60px;
+      border-radius: 40px;
+      overflow: hidden;
+
+      @include laptop-min {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    &__img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+
+      //   transform: rotate(10deg) scale(1.7) translate(0, 10px);
+    }
+
+    // &:nth-child(even) &__img {
+    //   transform: rotate(-10deg) scale(1.7) translate(0, 10px);
+    // }
+  }
+</style>

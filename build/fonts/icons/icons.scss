@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "icons";
+  src: url('icons.eot?t=1757803739792'); /* IE9*/
+  src: url('icons.eot?t=1757803739792#iefix') format('embedded-opentype') /* IE6-IE8 */,
+  url('icons.woff2?t=1757803739792') format('woff2'),
+  url('icons.woff?t=1757803739792') format('woff'),
+  url('icons.ttf?t=1757803739792') format('truetype'),
+  url('icons.svg?t=1757803739792') format('svg');
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icons' !important;font-size: undefined;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-accordion-chevron::before { content: "\ea01"; }
+.icon-accordion-plus::before { content: "\ea02"; }
+.icon-attachment::before { content: "\ea03"; }
+.icon-burger::before { content: "\ea04"; }
+.icon-chevron::before { content: "\ea05"; }
+.icon-clear::before { content: "\ea06"; }
+.icon-cross::before { content: "\ea07"; }
+.icon-mail::before { content: "\ea08"; }
+.icon-phone::before { content: "\ea09"; }
+.icon-telegram::before { content: "\ea0a"; }
+.icon-vk::before { content: "\ea0b"; }
+.icon-whatsapp::before { content: "\ea0c"; }
+
+
+$icon-accordion-chevron: '\ea01';
+$icon-accordion-plus: '\ea02';
+$icon-attachment: '\ea03';
+$icon-burger: '\ea04';
+$icon-chevron: '\ea05';
+$icon-clear: '\ea06';
+$icon-cross: '\ea07';
+$icon-mail: '\ea08';
+$icon-phone: '\ea09';
+$icon-telegram: '\ea0a';
+$icon-vk: '\ea0b';
+$icon-whatsapp: '\ea0c';

@@ -1,0 +1,52 @@
+---
+interface Props {}
+
+const {} = Astro.props;
+---
+
+<div class="main-hero">
+  <a href="" class="main-hero__logo">
+    <img src="/img/full-logo.svg" alt="hero" class="main-hero__logo-img" />
+  </a>
+</div>
+
+<style is:global lang="scss">
+  .main-hero {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    overflow: hidden;
+    @include laptop-min {
+      padding-top: 100px;
+      // min-height: 420px;
+      min-height: 520px;
+    }
+
+    @include desktop-min {
+      padding-top: 120px;
+    }
+
+    &__logo {
+      height: 70px;
+      transform: translateY(26px);
+      align-self: flex-end;
+      @include laptop-min {
+        max-width: unset;
+
+        height: 100px;
+      }
+
+      @include desktop-min {
+        height: 140px;
+        transform: translateY(46px);
+      }
+
+      &-img {
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+</style>
