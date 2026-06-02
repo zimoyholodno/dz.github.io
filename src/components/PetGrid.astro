@@ -206,6 +206,34 @@ const list = [
     title: "Рома-Бананчик",
     age: "1 год",
   },
+  // {
+  //   src: "img/bird/8.jpg",
+  //   sterilized: false,
+  //   vaccinated: false,
+  //   title: "Геннадий",
+  //   age: "2 месяца",
+  // },
+  {
+    src: "img/cat/8.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Валерий",
+    age: "4 месяца",
+  },
+  {
+    src: "img/dog/8.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Евгений",
+    age: "7 лет",
+  },
+  {
+    src: "img/hourse.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Нупапа",
+    age: "3 года",
+  },
 ];
 ---
 
@@ -238,7 +266,7 @@ const list = [
     }
     &--linear {
       grid-template-columns: repeat(2, 1fr);
-      column-gap: 15px;
+      column-gap: 8px;
       row-gap: 40px;
 
       @include tablet-min {
@@ -291,7 +319,7 @@ const list = [
 
     &--fancy {
       grid-template-columns: repeat(2, 1fr);
-      column-gap: 15px;
+      column-gap: 8px;
       row-gap: 40px;
 
       & > a:nth-child(3n + 1) {
@@ -663,6 +691,7 @@ const list = [
 
               margin-right: -117px;
               margin-right: 0; //можно убрать и будет как на зя
+              margin-right: -117px;
             }
 
             & .pet-card__top {
@@ -688,7 +717,7 @@ const list = [
 
       @include desktop-min {
         // column-gap: 30px;
-        // row-gap: 60px;
+        row-gap: 20px;
       }
 
       @include widescreen-min {

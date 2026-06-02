@@ -11,13 +11,18 @@ const { color, text } = Astro.props;
 
 <style is:global lang="scss">
   .card-label {
-    padding: 10px;
+    padding: 6px;
 
     font-weight: 600;
     font-size: 11px;
     line-height: 100%;
     letter-spacing: 1.65px;
     text-transform: lowercase;
+
+    @include laptop-min {
+      font-size: 11px;
+      padding: 10px;
+    }
 
     &--pink {
       color: var(--color-white);

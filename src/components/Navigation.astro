@@ -32,6 +32,11 @@ const list: { href: string; name: string }[] = [
     font-weight: 600;
     line-height: 1;
     font-size: 20px;
+    padding-block: 20px;
+
+    @include laptop-min {
+      padding: 0;
+    }
 
     &__item {
       @include laptop-min {

@@ -29,8 +29,8 @@ const mobileMenuTrigger = "mobile-menu";
   <div class="header__mobile">
     <Burger name={mobileMenuTrigger} />
 
-    <a href="#" class="header__logo">
-      <img src="/img/logo-mobile.svg" alt="" class="header__logo-img" />
+    <a href="/index.html" class="header__logo">
+      <Icon icon="logo" class="header__logo-img" />
     </a>
   </div>
 </header>
@@ -98,14 +98,14 @@ const mobileMenuTrigger = "mobile-menu";
     &__mobile {
       grid-area: center;
       padding: 8px 15px;
-      // display: flex;
-      // justify-content: space-between;
+      display: flex;
+      justify-content: space-between;
 
       position: relative;
       z-index: 100;
 
-      display: grid;
-      grid-template-columns: auto 1fr;
+      // display: grid;
+      // grid-template-columns: auto 1fr;
       align-items: center;
 
       color: var(--color-slate-950);
