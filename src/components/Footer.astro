@@ -6,6 +6,16 @@ const {} = Astro.props;
 const nav1 = ["О компании", "Бренды", "Акции", "Доставка и оплата"];
 
 const nav2 = ["Гарантия", "Отзывы", "Блог", "Контакты"];
+
+const list: { href: string; name: string }[] = [
+  { href: "/company.html", name: "о компании" },
+  // { href: "/brand.html", name: "бренды" },
+  // { href: "/stock.html", name: "акции" },
+  // { href: "/delivery.html", name: "доставка и оплата" },
+  // { href: "/guarantees.html", name: "гарантия" },
+  { href: "/blog.html", name: "блог" },
+  { href: "/contact.html", name: "контакты" },
+];
 ---
 
 <footer class="footer">
@@ -30,18 +40,9 @@ const nav2 = ["Гарантия", "Отзывы", "Блог", "Контакты"
 
     <div class="footer__nav-one">
       {
-        nav1.map((item) => (
-          <a href="#" class="footer__nav-item">
-            {item}
-          </a>
-        ))
-      }
-    </div>
-    <div class="footer__nav-two">
-      {
-        nav2.map((item) => (
-          <a href="#" class="footer__nav-item">
-            {item}
+        list.map(({ href, name }) => (
+          <a {href} class="footer__nav-item">
+            {name}
           </a>
         ))
       }
