@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant: "blog";
+  variant: "blog" | "guarantees" | "tabs";
 }
 
 const { variant } = Astro.props;
@@ -32,22 +32,190 @@ const { variant } = Astro.props;
       }
 
       h2 {
+        font-weight: 600;
+        font-size: 36px;
+        line-height: 1;
+
+        @include laptop-min {
+          font-size: 53px;
+        }
       }
 
       h3 {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 1;
+
+        @include laptop-min {
+          font-size: 37px;
+        }
       }
 
       h4 {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 1;
+
+        @include laptop-min {
+          font-size: 37px;
+        }
       }
 
       h5 {
       }
 
       p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.6;
+
+        @include laptop-min {
+          font-size: 16px;
+        }
       }
 
       a {
-        
+      }
+
+      :where(p):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+        margin-top: 1.25em;
+        margin-bottom: 2.75em;
+      }
+
+      :where(h4):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+        color: var(--tw-prose-headings);
+        font-weight: 600;
+        margin-top: 2.8em;
+        margin-bottom: 0.5em;
+        line-height: 1.5;
+      }
+    }
+
+    &--guarantees {
+      /* цвет текста */
+      --prose-text: inherit;
+
+      /* цвет заголовков */
+      --prose-title: inherit;
+
+      /* цвет ссылок */
+      --prose-link: inherit;
+
+      /* цвет маркеров списков */
+      --prose-bullet: inherit;
+
+      /* цвет цифр списка */
+      --prose-counter: inherit;
+
+      h1 {
+        font-weight: 600;
+        font-size: 36px;
+        line-height: 1;
+        margin-top: 0;
+        margin-bottom: 0;
+
+        @include laptop-min {
+          font-size: 53px;
+        }
+      }
+
+      h2 {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 1;
+        margin-top: 0;
+        margin-bottom: 0;
+
+        @include laptop-min {
+          // margin-top: 1.4em;
+
+          font-size: 37px;
+        }
+      }
+
+      h3 {
+      }
+
+      h4 {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 1;
+        margin-top: 0;
+        margin-bottom: 0;
+
+        @include laptop-min {
+          font-size: 37px;
+        }
+      }
+
+      h5 {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 1;
+        margin-top: 0;
+        margin-bottom: 0;
+
+        @include laptop-min {
+          margin-top: 0;
+          font-size: 37px;
+        }
+      }
+
+      p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.6;
+
+        @include laptop-min {
+          font-size: 16px;
+        }
+      }
+
+      a {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      p + h2 {
+        margin-top: 1.4em;
+      }
+
+      :where(p):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+        margin-top: 1.25em;
+        margin-bottom: 1.75em;
+      }
+
+      :where(h4):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+        color: var(--tw-prose-headings);
+        font-weight: 600;
+        margin-top: 2.8em;
+        margin-bottom: 0.5em;
+        line-height: 1.5;
+      }
+
+      :where(.prose > :last-child):not(
+        :where([class~="not-prose"], [class~="not-prose"] *)
+      ) {
+        margin-bottom: 0;
+      }
+
+      // :where(.prose > :first-child):not(
+      //     :where([class~="not-prose"], [class~="not-prose"] *)
+      //   ) {
+      //   margin-top: 1.4em;
+      // }
+    }
+
+    &--tabs {
+      p {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1.6;
+
+        @include laptop-min {
+          font-size: 16px;
+        }
       }
     }
   }

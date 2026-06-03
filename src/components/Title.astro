@@ -1,0 +1,118 @@
+---
+interface Props {
+  white?: boolean;
+  size?: "large" | "medium" | "small" | "tiny";
+  tag?: "h1" | "h2";
+
+  sub?: string;
+}
+
+const { white, size, tag = "h2", sub } = Astro.props;
+
+const Element = tag;
+---
+
+<Element
+  class:list={["title", white && "title__white", size && `title--${size}`]}
+>
+  <slot />
+
+  {sub && <p class="title--sub">{sub}</p>}
+</Element>
+
+<style is:global lang="scss">
+  .title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1;
+
+    // text-transform: uppercase;
+
+    hyphens: manual;
+    word-break: break-word;
+
+    @include laptop-min {
+      font-size: 31px;
+    }
+
+    &__white {
+      color: var(--color-white);
+    }
+
+    &--tiny {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1;
+
+      text-transform: lowercase;
+
+      @include laptop-min {
+        font-size: 20px;
+      }
+    }
+
+    &--small {
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 1;
+      text-transform: lowercase;
+
+      @include laptop-min {
+        // font-size: 35px;
+        font-size: 37px;
+      }
+    }
+
+    &--medium {
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 1;
+
+      text-transform: lowercase;
+
+      //   hyphens: auto;
+
+      @include tablet-min {
+        font-size: 40px;
+      }
+
+      @include laptop-min {
+        font-size: 53px;
+
+        hyphens: unset;
+      }
+    }
+
+    &--large {
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 1;
+
+      letter-spacing: 5.75px;
+      //   hyphens: auto;
+
+      @include tablet-min {
+        font-size: 40px;
+      }
+
+      @include laptop-min {
+        font-size: 50px;
+        letter-spacing: 7.55px;
+
+        hyphens: unset;
+      }
+    }
+
+    &--sub {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1;
+
+      text-transform: none;
+
+      color: var(--color-slate-400);
+
+      // padding-top: 25px;
+    }
+  }
+</style>

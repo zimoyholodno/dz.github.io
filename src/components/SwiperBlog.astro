@@ -1,0 +1,157 @@
+---
+import CardBlog from "./CardBlog.astro";
+import Icon from "./Icon.astro";
+import Prose from "./Prose.astro";
+import Title from "./Title.astro";
+
+interface Props {}
+
+const {} = Astro.props;
+
+const items: { src: string; title: string; date: string; text: string }[] = [
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+];
+---
+
+<div class="swiper-blog">
+  <div class="swiper-blog__content">
+    <Title size="small"> другие статьи </Title>
+    <div class="swiper-blog__nav">
+      <div class="swiper-blog__nav-prev">
+        <Icon icon="line" />
+      </div>
+      <div class="swiper-blog__nav-next">
+        <Icon icon="line" />
+      </div>
+    </div>
+  </div>
+  <div class="swiper-blog__swiper swiper">
+    <div class="swiper-blog__wrapper swiper-wrapper">
+      {
+        items.map(({ src, title, date, text }) => (
+          <div class="swiper-slide">
+            <CardBlog {src} {title} {date} {text} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style is:global lang="scss">
+  .swiper-blog {
+    &__content {
+      gap: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      padding-bottom: 20px;
+
+      @include laptop-min {
+        padding-bottom: 56px;
+        gap: 400px;
+      }
+
+      @include desktop-min {
+        justify-content: flex-end;
+      }
+    }
+
+    &__nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      @include tablet-min {
+        gap: 12px;
+      }
+
+      @include laptop-min {
+        justify-content: space-between;
+        width: 68px;
+      }
+
+      &-prev,
+      &-next {
+        // font-size: 24px;
+        // width: 32px;
+        // height: 32px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+
+        cursor: pointer;
+
+        @include tablet-min {
+          //   width: 40px;
+          //   height: 40px;
+        }
+      }
+
+      &-prev {
+        transform: rotate(180deg);
+      }
+
+      .swiper-button-disabled {
+        color: var(--color-slate-400);
+      }
+    }
+  }
+</style>

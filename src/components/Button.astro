@@ -1,0 +1,155 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends Omit<HTMLAttributes<"button">, "class"> {
+  /**
+   * Если указать ссылку, то будет тег <а>, иначе <button>
+   */
+  href?: string;
+  /**
+   * Вариации цветов
+   */
+  variant: "black" | "white";
+  /**
+   * Вариации размеров
+   */
+  size: "small" | "medium" | "large" | "same";
+
+  /**
+   * Вариации отступов по краям
+   */
+  inline?: "small" | "medium" | "large" | "great" | "same";
+
+  /**
+   * Вариации шрифта
+   */
+  font?: "small" | "medium" | "large";
+
+  /**
+   * id модального окна
+   */
+  modal?: string;
+}
+
+const { href, variant, modal, size, font, inline, ...restProps } = Astro.props;
+
+const Element = href ? "a" : "button";
+---
+
+<Element
+  {...restProps}
+  data-micromodal-trigger={modal}
+  href={href}
+  class:list={[
+    "button",
+    `button--variant-${variant}`,
+    `button--size-${size}`,
+    font && `button--font-${font}`,
+    inline && `button--inline-${inline}`,
+  ]}
+>
+  <slot />
+</Element>
+
+<style is:global lang="scss">
+  .button {
+    background-color: black;
+    color: white;
+    transition: all var(--transition);
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.4;
+
+    &--variant {
+      &-black {
+        color: var(--color-white);
+        background-color: var(--color-slate-950);
+
+        &:hover {
+          background-color: var(--color-gray-700);
+        }
+      }
+
+      &-white {
+        color: var(--color-slate-950);
+        background-color: var(--color-slate-200);
+        // border: 1px solid black;
+
+        &:hover {
+          color: var(--color-white);
+          background-color: var(--color-slate-950);
+        }
+      }
+    }
+
+    &--size {
+      &-small {
+        min-height: 42px;
+        // padding-inline: 20px;
+      }
+
+      &-medium {
+        min-height: 50px;
+        // padding-inline: 20px;
+      }
+
+      &-large {
+        min-height: 52px;
+        // padding-block: 19px;
+      }
+
+      &-same {
+        // height: 53px;
+        min-height: 52px;
+
+        // padding-block: 14px;
+        padding-inline: 14.5px;
+      }
+    }
+
+    &--inline {
+      &-small {
+        padding-inline: 20px;
+      }
+
+      &-medium {
+        padding-inline: 40px;
+      }
+
+      &-large {
+        padding-inline: 50px;
+      }
+
+      &-great {
+        padding-inline: 60px;
+      }
+
+      &-same {
+        padding-inline: 14px;
+      }
+    }
+
+    &--font {
+      &-small {
+        font-weight: 600;
+        font-size: 11px;
+        line-height: 1.4;
+        letter-spacing: 1.65px;
+      }
+
+      &-medium {
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      &-large {
+        font-weight: 500;
+
+        font-size: 24px;
+      }
+    }
+  }
+</style>

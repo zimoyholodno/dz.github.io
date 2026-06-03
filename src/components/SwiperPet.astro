@@ -1,0 +1,407 @@
+---
+import Icon from "./Icon.astro";
+import PetCard from "./PetCard.astro";
+import Prose from "./Prose.astro";
+import Title from "./Title.astro";
+
+interface Props {
+  title: string;
+
+  name?: "similar" | "like";
+}
+
+const { title, name } = Astro.props;
+
+const list = [
+  {
+    src: "img/dog/1.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Бублик",
+    age: "2 года",
+  },
+  {
+    src: "img/cat/1.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Сосиска",
+    age: "1.5 года",
+  },
+  {
+    src: "img/rodents/1.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Шарик-Компотик",
+    age: "6 месяцев",
+  },
+  {
+    src: "img/bird/1.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Кеша-Печенька",
+    age: "1 год",
+  },
+  {
+    src: "img/dog/2.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Пельмень",
+    age: "3 года",
+  },
+  {
+    src: "img/cat/2.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Ватрушка",
+    age: "4 года",
+  },
+  {
+    src: "img/rodents/2.jpg",
+    sterilized: true,
+    vaccinated: false,
+    title: "Сырник",
+    age: "8 месяцев",
+  },
+  {
+    src: "img/bird/2.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Гоша-Кокос",
+    age: "2 года",
+  },
+  {
+    src: "img/dog/3.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Зефир",
+    age: "1.5 года",
+  },
+  {
+    src: "img/cat/3.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Мармеладка",
+    age: "5 лет",
+  },
+  {
+    src: "img/rodents/3.jpg",
+    sterilized: false,
+    vaccinated: false,
+    title: "Пуффик-Кефирчик",
+    age: "4 месяца",
+  },
+  {
+    src: "img/bird/3.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Жорик-Бублик",
+    age: "3 года",
+  },
+  {
+    src: "img/dog/4.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Тофу",
+    age: "7 месяцев",
+  },
+  {
+    src: "img/cat/4.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Котлета",
+    age: "2.5 года",
+  },
+  {
+    src: "img/rodents/4.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Хомя-Кукурузя",
+    age: "1 год",
+  },
+  {
+    src: "img/bird/4.jpg",
+    sterilized: false,
+    vaccinated: false,
+    title: "Петруша-Одуван",
+    age: "6 месяцев",
+  },
+  {
+    src: "img/dog/5.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Веник",
+    age: "4 года",
+  },
+  {
+    src: "img/cat/5.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Сметанка",
+    age: "1 год",
+  },
+  {
+    src: "img/rodents/5.jpg",
+    sterilized: true,
+    vaccinated: false,
+    title: "Пышка-Топтыжка",
+    age: "9 месяцев",
+  },
+  {
+    src: "img/bird/5.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Аркаша-Фунтик",
+    age: "1.5 года",
+  },
+  {
+    src: "img/dog/6.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Гамбургер",
+    age: "2 года",
+  },
+  {
+    src: "img/cat/6.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Нутелла",
+    age: "3 года",
+  },
+  {
+    src: "img/rodents/6.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Шурупчик",
+    age: "5 месяцев",
+  },
+  {
+    src: "img/bird/6.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Тимоха-Батон",
+    age: "2 года",
+  },
+  {
+    src: "img/dog/7.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Пончик",
+    age: "1 год",
+  },
+  {
+    src: "img/cat/7.jpg",
+    sterilized: true,
+    vaccinated: false,
+    title: "Ириска",
+    age: "6 лет",
+  },
+  {
+    src: "img/rodents/7.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Паштетик",
+    age: "10 месяцев",
+  },
+  {
+    src: "img/bird/7.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Рома-Бананчик",
+    age: "1 год",
+  },
+  // {
+  //   src: "img/bird/8.jpg",
+  //   sterilized: false,
+  //   vaccinated: false,
+  //   title: "Геннадий",
+  //   age: "2 месяца",
+  // },
+  {
+    src: "img/cat/8.jpg",
+    sterilized: false,
+    vaccinated: true,
+    title: "Валерий",
+    age: "4 месяца",
+  },
+  {
+    src: "img/dog/8.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Евгений",
+    age: "7 лет",
+  },
+  {
+    src: "img/hourse.jpg",
+    sterilized: true,
+    vaccinated: true,
+    title: "Нупапа",
+    age: "3 года",
+  },
+];
+---
+
+<div class="swiper-pet">
+  <div class="swiper-pet__content">
+    <div class="swiper-pet__content-container">
+      <Title size="small">
+        {title}
+      </Title>
+      <div class="swiper-pet__nav">
+        <div
+          class:list={[
+            "swiper-pet__nav-prev",
+            name && `swiper-pet__nav-prev--${name}`,
+          ]}
+        >
+          <Icon icon="line" />
+        </div>
+        <div
+          class:list={[
+            "swiper-pet__nav-next",
+            name && `swiper-pet__nav-next--${name}`,
+          ]}
+        >
+          <Icon icon="line" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class:list={[
+      "swiper-pet__swiper swiper",
+      name && `swiper-pet__swiper--${name}`,
+    ]}
+  >
+    <div class="swiper-pet__wrapper swiper-wrapper">
+      {
+        list.map((item) => (
+          <div class="swiper-pet__slide swiper-slide">
+            <PetCard {...item} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style is:global lang="scss">
+  .swiper-pet {
+    // padding-top: 17px;
+    &__content {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+
+      &-container {
+        gap: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        padding-bottom: 20px;
+
+        @include laptop-min {
+          padding-bottom: 40px;
+        }
+
+        @include desktop-min {
+          max-width: 715px;
+        }
+      }
+    }
+
+    &__nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      @include tablet-min {
+        gap: 12px;
+      }
+
+      @include laptop-min {
+        justify-content: space-between;
+        width: 68px;
+      }
+
+      &-prev,
+      &-next {
+        // width: 32px;
+        // height: 32px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+
+        cursor: pointer;
+      }
+
+      &-prev {
+        transform: rotate(180deg);
+      }
+
+      .swiper-button-disabled {
+        color: var(--color-slate-400);
+      }
+    }
+    &__slide {
+      // margin-right: 51px;
+
+      // width: auto;
+      min-width: 0;
+
+      transition: all var(--transition);
+
+      @include laptop-min {
+        padding-right: 50px;
+      }
+    }
+
+    &__slide.custom-gap {
+      transition: all var(--transition);
+
+      @include laptop-min {
+        justify-items: end;
+        text-align: end;
+        & .pet-card__price {
+          justify-content: end;
+          flex-direction: row-reverse;
+        }
+
+        & .pet-card__variation {
+          justify-content: end;
+          // flex-direction: row-reverse;
+        }
+
+        & .pet-card__rating {
+          justify-content: end;
+        }
+        margin-right: 50px;
+      }
+    }
+
+    &__slide.custom-text {
+      transition: all var(--transition);
+
+      @include laptop-min {
+        justify-items: end;
+        text-align: end;
+        & .pet-card__price {
+          justify-content: end;
+          flex-direction: row-reverse;
+        }
+
+        & .pet-card__variation {
+          justify-content: end;
+          // flex-direction: row-reverse;
+        }
+
+        & .pet-card__rating {
+          justify-content: end;
+        }
+      }
+    }
+  }
+</style>

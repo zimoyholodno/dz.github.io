@@ -1,0 +1,106 @@
+---
+import Icon from "./Icon.astro";
+import Prose from "./Prose.astro";
+import Title from "./Title.astro";
+
+interface Props {
+  src: string;
+  title: string;
+  date: string;
+  text: string;
+}
+
+const { src, title, date, text } = Astro.props;
+---
+
+<a href="/blog-detail.html" class="card-blog">
+  <div class="card-blog__top">
+    <img {src} alt="" class="card-blog__top-image" />
+  </div>
+  <div class="card-blog__container">
+    <Title size="tiny">{title}</Title>
+    <p class="card-blog__date">
+      {date}
+    </p>
+
+    <p class="card-blog__text">
+      {text}
+    </p>
+
+    <div class="card-blog__button">
+      ЧИТАТЬ ПОЛНОСТЬЮ <Icon icon="line" class="card-blog__button-icon" />
+    </div>
+  </div>
+</a>
+
+<style is:global lang="scss">
+  .card-blog {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 16px;
+
+    &__top {
+      height: 150px;
+      width: 100%;
+      overflow: hidden;
+
+      &-image {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      @include tablet-min {
+        height: 250px;
+      }
+    }
+
+    &__container {
+      display: grid;
+      gap: 16px;
+      grid-template-rows: auto auto auto 1fr;
+
+      @include laptop-min {
+        gap: 24px;
+      }
+    }
+
+    &__date {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1;
+
+      color: var(--color-slate-400);
+    }
+
+    &__text {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    &__button {
+      font-weight: 600;
+      font-size: 11px;
+      line-height: 1;
+      letter-spacing: 1.65px;
+      color: var(--color-slate-400);
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      transition: all var(--transition);
+      gap: 13px;
+      align-self: end;
+
+      &-icon {
+        font-size: 7px;
+      }
+    }
+
+    &:hover &__button {
+      color: var(--color-pink-400);
+    }
+  }
+</style>

@@ -1,0 +1,23 @@
+---
+import BlogGrid from "@components/BlogGrid.astro";
+import Hero from "@components/Hero.astro";
+import Layout from "@components/Layout.astro";
+import SecondaryHero from "@components/SecondaryHero.astro";
+import Section from "@components/Section.astro";
+
+const title = "Блог";
+
+const src = "img/back-block.jpg";
+---
+
+<Layout {title} scripts={["blog"]}>
+  <Hero {src}>
+    <Section>
+      <SecondaryHero variant="dot" items={["Главная", title]} {title} />
+    </Section>
+  </Hero>
+
+  <Section top="large" bottom="large">
+    <BlogGrid />
+  </Section>
+</Layout>

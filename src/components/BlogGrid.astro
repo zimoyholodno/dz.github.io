@@ -1,0 +1,107 @@
+---
+import Button from "./Button.astro";
+import CardBlog from "./CardBlog.astro";
+
+interface Props {}
+
+const {} = Astro.props;
+
+const items: { src: string; title: string; date: string; text: string }[] = [
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+  {
+    src: "/img/blog3.jpg",
+    title: "заголовок статьи",
+    date: "12.05.2025",
+    text: "Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. ",
+  },
+];
+---
+
+<div class="blog-grid">
+  <div class="blog-grid__container">
+    {
+      items.map(({ src, title, date, text }) => (
+        <CardBlog {src} {title} {date} {text} />
+      ))
+    }
+  </div>
+</div>
+
+<style is:global lang="scss">
+  .blog-grid {
+    display: grid;
+    justify-items: center;
+    gap: 50px;
+
+    &__container {
+      display: grid;
+      grid-template-columns: 100%;
+      gap: 40px;
+
+      @include tablet-min {
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+      }
+
+      @include laptop-min {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    &__button {
+      display: grid;
+      width: 100%;
+
+      @include laptop-min {
+        width: 226px;
+      }
+    }
+  }
+</style>

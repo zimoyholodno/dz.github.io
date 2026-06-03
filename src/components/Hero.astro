@@ -6,7 +6,7 @@ interface Props {
 const { src } = Astro.props;
 ---
 
-<section class="hero">
+<section class="hero" style={`--hero-bg: url(${src});`}>
   <!-- <img {src} alt="" loading="lazy" class="hero__back" /> -->
   <div class="hero__container"><slot /></div>
 </section>
@@ -52,7 +52,7 @@ const { src } = Astro.props;
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url("img/hero.png");
+        background-image: var(--hero-bg);
         z-index: -1;
         background-size: cover;
         background-position: bottom;
