@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue';
+
+export const Star = defineComponent({
+  name: 'Star',
+  props: {
+    class: {
+      type: String,
+      default: ''
+    }
+  },
+  setup(props, { attrs }) {
+    return () => h(
+      'svg',
+      {
+        viewBox: '0 0 20 20',
+        
+        class: `icon ${props.class}`,
+        ...attrs
+      },
+      [
+        h('path', {"d": "M472.615 92.87L621.41 359.344l297.04 60.495-205.037 225.2 34.737 303.893-275.535-127.29-275.534 127.29L231.82 645.04 26.78 419.84l297.04-60.495L472.615 92.87z", "fillRule": "evenodd"})
+      ]
+    );
+  }
+});

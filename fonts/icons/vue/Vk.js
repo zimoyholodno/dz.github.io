@@ -1,0 +1,25 @@
+import { defineComponent, h } from 'vue';
+
+export const Vk = defineComponent({
+  name: 'Vk',
+  props: {
+    class: {
+      type: String,
+      default: ''
+    }
+  },
+  setup(props, { attrs }) {
+    return () => h(
+      'svg',
+      {
+        viewBox: '0 0 20 20',
+        
+        class: `icon ${props.class}`,
+        ...attrs
+      },
+      [
+        h('path', {"d": "M557.74 806.4C207.87 806.4 8.32 575.787 0 192h175.232c5.76 281.685 134.955 400.98 237.312 425.6V192H577.58v242.944C678.612 424.49 784.767 313.77 820.607 192H985.6c-27.477 150.06-142.592 260.78-224.47 306.26C843.01 535.17 974.124 631.724 1024 806.4H842.325C803.328 689.536 706.133 599.125 577.58 586.837V806.4h-19.84z", "fillRule": "evenodd"})
+      ]
+    );
+  }
+});
