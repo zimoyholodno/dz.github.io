@@ -1,0 +1,60 @@
+---
+import AdvantagesBlock from "./AdvantagesBlock.astro";
+import Prose from "./Prose.astro";
+
+interface Props {}
+
+const {} = Astro.props;
+const items: { index: number; text: string }[] = [
+  {
+    index: 1,
+    text: "Более 300 животных нашли дом за последний год",
+  },
+  {
+    index: 2,
+    text: "Возможность познакомиться с питомцем в уютной комнате адаптации перед решением",
+  },
+  {
+    index: 3,
+    text: "Бесплатная консультация по содержанию и воспитанию после усыновления",
+  },
+  {
+    index: 4,
+    text: "Скидки до 50% на первичную вакцинацию и чипирование в партнерских клиниках",
+  },
+  {
+    index: 5,
+    text: "Регулярные дни открытых дверей",
+  },
+];
+---
+
+<div class="advantages">
+  <Prose variant="blog"> <h2>наши преимущества</h2></Prose>
+
+  <div class="advantages__grid">
+    {items.map(({ index, text }) => <AdvantagesBlock {index} {text} />)}
+  </div>
+</div>
+
+<style is:global lang="scss">
+  .advantages {
+    display: grid;
+    gap: 60px;
+
+    &__grid {
+      width: 100%;
+      display: grid;
+      gap: 16px;
+
+      @include tablet-min {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      @include laptop-min {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+  }
+</style>

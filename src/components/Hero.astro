@@ -7,13 +7,13 @@ const { src } = Astro.props;
 ---
 
 <section class="hero" style={`--hero-bg: url(${src});`}>
-  <!-- <img {src} alt="" loading="lazy" class="hero__back" /> -->
+  <img {src} alt="" loading="lazy" class="hero__back" />
   <div class="hero__container"><slot /></div>
 </section>
 
 <style is:global lang="scss">
   .hero {
-    height: 0;
+    height: 199%;
     min-height: 30vh;
     display: grid;
 
@@ -45,6 +45,8 @@ const { src } = Astro.props;
 
       background: rgba(0, 0, 0, 0.3);
       position: relative;
+      display: grid;
+      align-items: end;
       &::before {
         content: "";
         position: absolute;

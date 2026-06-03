@@ -1,0 +1,141 @@
+---
+interface Props {
+  index: number;
+  text: string;
+}
+
+const { index, text } = Astro.props;
+---
+
+<div class="advantages-block">
+  <div class="advantages-block__top">
+    <h4>{index}</h4>
+    <div class="advantages-block__top-gradient"></div>
+  </div>
+  <div class="advantages-block__separator">
+    <div class="advantages-block__separator-block"></div>
+  </div>
+  <p class="advantages-block__text">
+    {text}
+  </p>
+</div>
+
+<style is:global lang="scss">
+  .advantages-block {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: start;
+    gap: 4px;
+
+    @include tablet-min {
+      gap: 14px;
+      grid-template-columns: unset;
+      grid-template-rows: auto auto 1fr;
+    }
+    &__top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      // align-items: flex-end;
+      gap: 5px;
+
+      font-weight: 600;
+      font-size: 32px;
+
+      line-height: 1;
+
+      color: var(--color-slate-400);
+
+      width: 24px;
+
+      @include tablet-min {
+        font-size: 55px;
+        width: unset;
+        flex-direction: row;
+        align-items: flex-end;
+      }
+
+      &-gradient {
+        height: 40px;
+        width: 10px;
+        background: linear-gradient(
+          transparent 90%,
+          var(--color-slate-400) 10%
+        );
+        background-size: 20px 10px;
+        // margin-left: 5px;
+
+        // background-color: linear-gradient(
+        //   to left,
+        //   var(--color-slate-400) 2%,
+        //   white
+        // );
+
+        @include tablet-min {
+          padding-inline: 20px;
+
+          height: 10px;
+          width: 100%;
+          background: linear-gradient(
+            to right,
+            transparent 90%,
+            var(--color-slate-400) 50%
+          );
+          background-size: 20px 1px;
+        }
+      }
+    }
+
+    &__separator {
+      opacity: 0;
+
+      height: 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 13px;
+
+      &-block {
+        background-color: var(--color-slate-400);
+        width: 1px;
+        height: 100%;
+      }
+
+      @include tablet-min {
+        opacity: 1;
+
+        width: 27px;
+        margin-top: unset;
+      }
+
+      @include laptop-min {
+      }
+    }
+
+    &__text {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.6;
+
+      text-wrap: balance;
+
+      // max-width: 160px;
+      // margin-top: 6px;
+
+      @include tablet-min {
+        max-width: 266px;
+        // margin-top: unset;
+
+        font-size: 16px;
+      }
+
+      @include laptop-min {
+      }
+    }
+
+    &:last-child &__top-gradient {
+      display: none;
+    }
+  }
+</style>
