@@ -1,0 +1,126 @@
+---
+import Button from "./Button.astro";
+
+import Title from "./Title.astro";
+
+interface Props {}
+
+const {} = Astro.props;
+---
+
+<div class="contact-data">
+  <div class="contact-data__slot">
+    <slot />
+  </div>
+
+  <Title size="medium">контакты</Title>
+
+  <div class="contact-data__cont">
+    <a href="#" class="contact-data__number">+7 900 000 00 00</a>
+    <a href="#" class="contact-data__mail">example@email.com</a>
+
+    <div class="contact-data__text">
+      <p>г. Город, ул. Уличная, д. 82, этаж 4, офис 488</p>
+      <p class="contact-data__text-cont">
+        <span>ИНН 60000000000</span>
+        <span> ОГРН 0000000000 </span>
+      </p>
+    </div>
+  </div>
+
+  <div class="contact-data__bottom">
+    <Button size="medium" variant="black" font="small">ОБРАТНАЯ СВЯЗЬ</Button>
+  </div>
+</div>
+
+<style is:global lang="scss">
+  .contact-data {
+    display: grid;
+    gap: 30px;
+
+    @include laptop-min {
+      gap: 104px;
+    }
+    &__slot {
+    }
+
+    &__container {
+      display: grid;
+    }
+
+    &__cont {
+      display: grid;
+      gap: 20px;
+
+      @include laptop-min {
+        gap: 40px;
+        padding-top: 1px;
+      }
+    }
+
+    &__number {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 1;
+      transition: color var(--transition);
+
+      &:hover {
+        color: var(--color-pink-400);
+      }
+
+      @include laptop-min {
+        font-size: 37px;
+      }
+    }
+
+    &__mail {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.6;
+      transition: color var(--transition);
+
+      &:hover {
+        color: var(--color-pink-400);
+      }
+
+      @include laptop-min {
+        font-size: 24px;
+      }
+    }
+
+    &__text {
+      color: var(--color-slate-400);
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 1;
+
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      @include laptop-min {
+        gap: 30px;
+        font-size: 16px;
+      }
+
+      &-cont {
+        display: flex;
+        gap: 22px;
+      }
+    }
+
+    &__social {
+      display: flex;
+      gap: 32px;
+    }
+
+    &__bottom {
+      display: grid;
+      width: 100%;
+
+      @include tablet-min {
+        max-width: 240px;
+      }
+    }
+  }
+</style>

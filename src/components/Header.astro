@@ -58,8 +58,7 @@ const mobileMenuTrigger = "mobile-menu";
     &__container {
       @include section;
       transition: var(--transition);
-      transition-property:
-        background-color, color, padding-block, border-bottom;
+      transition-property: background-color, color, padding-block, border-color;
       position: fixed;
       top: 0;
       left: 0;
@@ -192,7 +191,7 @@ const mobileMenuTrigger = "mobile-menu";
 
     &:hover &__container {
       background-color: var(--color-white);
-      border-bottom: unset;
+      border-color: transparent;
       color: var(--color-slate-950);
     }
 

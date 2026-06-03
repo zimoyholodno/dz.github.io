@@ -1,0 +1,57 @@
+---
+import Breadcrumb from "./Breadcrumb.astro";
+import ContactData from "./ContactData.astro";
+import YandexMap from "./YandexMap.astro";
+
+interface Props {
+  items: string[];
+
+  variant: "dot" | "icon";
+}
+
+const { items, variant } = Astro.props;
+---
+
+<div class="contacts">
+  <ContactData><Breadcrumb color="black" {items} {variant} /></ContactData>
+  <div class="contacts__map">
+    <YandexMap id="map" />
+  </div>
+</div>
+
+<style is:global lang="scss">
+  .contacts {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 30px;
+
+    @include tablet-min {
+      gap: 60px;
+    }
+
+    @include desktop-min {
+      //   grid-template-columns: auto auto;
+      grid-template-columns: 1fr auto;
+      grid-area: unset;
+    }
+
+    // @include desktop-min {
+    // }
+
+    &__map {
+      height: 200px;
+      width: 100%;
+      overflow: hidden;
+
+      @include tablet-min {
+        height: 350px;
+      }
+
+      @include desktop-min {
+        height: 100%;
+        max-width: 716px;
+        width: 100%;
+      }
+    }
+  }
+</style>

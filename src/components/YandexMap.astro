@@ -15,7 +15,11 @@ const { ...restProps } = Astro.props;
 
 <style is:global lang="scss">
   .yandex-map {
-    height: 500px;
-    width: 500px;
+    height: 100%;
+    width: 100%;
+
+    @include desktop-min {
+      width: 720px;
+    }
   }
 </style>
