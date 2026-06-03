@@ -1,85 +1,53 @@
 <!doctype html>
 <html lang="ru">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="format-detection" content="telephone=no" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="format-detection" content="telephone=no">
     <title>Блог</title>
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <link rel="stylesheet" href="./css/lightgallery-bundle.min.css" />
-    <link rel="stylesheet" href="./css/swiper-bundle.css" />
-    <link rel="stylesheet" href="./fonts/icons/icons.css?v=0.12131769" />
-    <link rel="stylesheet" href="./css/custom-style.css?v=0.12132118" />
-    <script type="module" src="./js/general.js?v=0.12131769"></script>
-    <script type="module" src="./js/blog.js?v=0.12131769"></script>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="stylesheet" href="./css/lightgallery-bundle.min.css">
+    <link rel="stylesheet" href="./css/swiper-bundle.css">
+    <link rel="stylesheet" href="./fonts/icons/icons.css?v=0.12607704">
+    <link rel="stylesheet" href="./css/custom-style.css?v=0.12608071">
+    <script type="module" src="./js/general.js?v=0.12607704"></script>
+    <script type="module" src="./js/blog.js?v=0.12607704"></script>
   </head>
   <body>
     <header class="header">
       <div class="header__container">
         <div class="header__desktop">
-          <a href="./index.html" class="header__logo">
-            <span class="icon icon-logo header__logo-img"></span>
-          </a>
+          <a href="./index.html" class="header__logo"> <span class="icon icon-logo header__logo-img"></span> </a>
           <div class="header__navigation">
-            <div class="navigation">
-              <a href="./company.html" class="navigation__item"> о компании </a
-              ><a href="./blog.html" class="navigation__item"> блог </a
-              ><a href="./contact.html" class="navigation__item"> контакты </a>
-            </div>
+            <div class="navigation"><a href="./company.html" class="navigation__item"> о компании </a><a href="./blog.html" class="navigation__item"> блог </a><a href="./contact.html" class="navigation__item"> контакты </a></div>
           </div>
         </div>
       </div>
       <div class="header__mobile">
-        <button
-          class="burger"
-          data-drawer-trigger="mobile-menu"
-          data-open="false"
-        >
-          <span class="icon icon-burger burger__icon"></span>
-          <span class="icon icon-cross burger__open"></span>
-        </button>
-        <a href="./index.html" class="header__logo">
-          <span class="icon icon-logo header__logo-img"></span>
-        </a>
+        <button class="burger" data-drawer-trigger="mobile-menu" data-open="false"><span class="icon icon-burger burger__icon"></span> <span class="icon icon-cross burger__open"></span></button> <a href="./index.html" class="header__logo"> <span class="icon icon-logo header__logo-img"></span> </a>
       </div>
     </header>
-    <div
-      class="drawer drawer--left drawer--primary"
-      data-drawer-container="mobile-menu"
-      data-open="false"
-    >
+    <div class="drawer drawer--left drawer--primary" data-drawer-container="mobile-menu" data-open="false">
       <div class="drawer__back" data-drawer-close="mobile-menu"></div>
       <div class="drawer__container">
         <div class="drawer__content">
-          <div class="navigation">
-            <a href="./company.html" class="navigation__item"> о компании </a
-            ><a href="./blog.html" class="navigation__item"> блог </a
-            ><a href="./contact.html" class="navigation__item"> контакты </a>
-          </div>
+          <div class="navigation"><a href="./company.html" class="navigation__item"> о компании </a><a href="./blog.html" class="navigation__item"> блог </a><a href="./contact.html" class="navigation__item"> контакты </a></div>
         </div>
       </div>
     </div>
     <main class="main">
-      <section class="hero" style="--hero-bg: url(/img/back-block.jpg)">
-        <img
-          src="./img/back-block.jpg"
-          alt=""
-          loading="lazy"
-          class="hero__back"
-        />
+      <section class="hero" style="--hero-bg: url(./img/back-block.jpg)">
+        <img src="./img/back-block.jpg" alt="" loading="lazy" class="hero__back">
         <div class="hero__container">
           <div class="section section--center">
             <div class="section__container">
               <div class="secondary-hero">
-                <div class="secondary-hero__title">
-                  <h2 class="title title__white title--large">Блог</h2>
-                </div>
+                <div class="secondary-hero__title"><h2 class="title title__white title--large">Блог</h2></div>
                 <div class="secondary-hero__breadcrumb">
                   <div class="breadcrumb breadcrumb--dot">
                     <div class="breadcrumb__container">
                       <span>
-                        <span> <a href="#">Главная</a> </span>
-                        <span class="breadcrumb_last">Блог</span>
+                        <span> <a href="#">Главная</a> </span> <span class="breadcrumb_last">Блог</span>
                       </span>
                     </div>
                   </div>
@@ -89,208 +57,89 @@
           </div>
         </div>
       </section>
-      <div
-        class="section section--center section--bottom-large section--top-large"
-      >
+      <div class="section section--center section--bottom-large section--top-large">
         <div class="section__container">
           <div class="blog-grid">
             <div class="blog-grid__container">
               <a href="./blog-detail.html" class="card-blog">
-                <div class="card-blog__top">
-                  <img
-                    src="./img/blog3.jpg"
-                    alt=""
-                    class="card-blog__top-image"
-                  />
-                </div>
+                <div class="card-blog__top"><img src="./img/blog3.jpg" alt="" class="card-blog__top-image"></div>
                 <div class="card-blog__container">
                   <h2 class="title title--tiny">заголовок статьи</h2>
                   <p class="card-blog__date">12.05.2025</p>
-                  <p class="card-blog__text">
-                    Lorem ipsum dolor sit amet consectet adipiscing elit eget
-                    quamumto. Lorem ipsum dolor sit amet consectet adipiscing
-                    elit eget quamumto.
-                  </p>
-                  <div class="card-blog__button">
-                    ЧИТАТЬ ПОЛНОСТЬЮ
-                    <span class="icon icon-line card-blog__button-icon"></span>
-                  </div>
+                  <p class="card-blog__text">Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto.</p>
+                  <div class="card-blog__button">ЧИТАТЬ ПОЛНОСТЬЮ <span class="icon icon-line card-blog__button-icon"></span></div>
                 </div>
               </a>
               <a href="./blog-detail.html" class="card-blog">
-                <div class="card-blog__top">
-                  <img
-                    src="./img/blog3.jpg"
-                    alt=""
-                    class="card-blog__top-image"
-                  />
-                </div>
+                <div class="card-blog__top"><img src="./img/blog3.jpg" alt="" class="card-blog__top-image"></div>
                 <div class="card-blog__container">
                   <h2 class="title title--tiny">заголовок статьи</h2>
                   <p class="card-blog__date">12.05.2025</p>
-                  <p class="card-blog__text">
-                    Lorem ipsum dolor sit amet consectet adipiscing elit eget
-                    quamumto. Lorem ipsum dolor sit amet consectet adipiscing
-                    elit eget quamumto.
-                  </p>
-                  <div class="card-blog__button">
-                    ЧИТАТЬ ПОЛНОСТЬЮ
-                    <span class="icon icon-line card-blog__button-icon"></span>
-                  </div>
+                  <p class="card-blog__text">Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto.</p>
+                  <div class="card-blog__button">ЧИТАТЬ ПОЛНОСТЬЮ <span class="icon icon-line card-blog__button-icon"></span></div>
                 </div>
               </a>
               <a href="./blog-detail.html" class="card-blog">
-                <div class="card-blog__top">
-                  <img
-                    src="./img/blog3.jpg"
-                    alt=""
-                    class="card-blog__top-image"
-                  />
-                </div>
+                <div class="card-blog__top"><img src="./img/blog3.jpg" alt="" class="card-blog__top-image"></div>
                 <div class="card-blog__container">
                   <h2 class="title title--tiny">заголовок статьи</h2>
                   <p class="card-blog__date">12.05.2025</p>
-                  <p class="card-blog__text">
-                    Lorem ipsum dolor sit amet consectet adipiscing elit eget
-                    quamumto. Lorem ipsum dolor sit amet consectet adipiscing
-                    elit eget quamumto.
-                  </p>
-                  <div class="card-blog__button">
-                    ЧИТАТЬ ПОЛНОСТЬЮ
-                    <span class="icon icon-line card-blog__button-icon"></span>
-                  </div>
+                  <p class="card-blog__text">Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto.</p>
+                  <div class="card-blog__button">ЧИТАТЬ ПОЛНОСТЬЮ <span class="icon icon-line card-blog__button-icon"></span></div>
                 </div>
               </a>
               <a href="./blog-detail.html" class="card-blog">
-                <div class="card-blog__top">
-                  <img
-                    src="./img/blog3.jpg"
-                    alt=""
-                    class="card-blog__top-image"
-                  />
-                </div>
+                <div class="card-blog__top"><img src="./img/blog3.jpg" alt="" class="card-blog__top-image"></div>
                 <div class="card-blog__container">
                   <h2 class="title title--tiny">заголовок статьи</h2>
                   <p class="card-blog__date">12.05.2025</p>
-                  <p class="card-blog__text">
-                    Lorem ipsum dolor sit amet consectet adipiscing elit eget
-                    quamumto. Lorem ipsum dolor sit amet consectet adipiscing
-                    elit eget quamumto.
-                  </p>
-                  <div class="card-blog__button">
-                    ЧИТАТЬ ПОЛНОСТЬЮ
-                    <span class="icon icon-line card-blog__button-icon"></span>
-                  </div>
+                  <p class="card-blog__text">Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto.</p>
+                  <div class="card-blog__button">ЧИТАТЬ ПОЛНОСТЬЮ <span class="icon icon-line card-blog__button-icon"></span></div>
                 </div>
               </a>
               <a href="./blog-detail.html" class="card-blog">
-                <div class="card-blog__top">
-                  <img
-                    src="./img/blog3.jpg"
-                    alt=""
-                    class="card-blog__top-image"
-                  />
-                </div>
+                <div class="card-blog__top"><img src="./img/blog3.jpg" alt="" class="card-blog__top-image"></div>
                 <div class="card-blog__container">
                   <h2 class="title title--tiny">заголовок статьи</h2>
                   <p class="card-blog__date">12.05.2025</p>
-                  <p class="card-blog__text">
-                    Lorem ipsum dolor sit amet consectet adipiscing elit eget
-                    quamumto. Lorem ipsum dolor sit amet consectet adipiscing
-                    elit eget quamumto.
-                  </p>
-                  <div class="card-blog__button">
-                    ЧИТАТЬ ПОЛНОСТЬЮ
-                    <span class="icon icon-line card-blog__button-icon"></span>
-                  </div>
+                  <p class="card-blog__text">Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto.</p>
+                  <div class="card-blog__button">ЧИТАТЬ ПОЛНОСТЬЮ <span class="icon icon-line card-blog__button-icon"></span></div>
                 </div>
               </a>
               <a href="./blog-detail.html" class="card-blog">
-                <div class="card-blog__top">
-                  <img
-                    src="./img/blog3.jpg"
-                    alt=""
-                    class="card-blog__top-image"
-                  />
-                </div>
+                <div class="card-blog__top"><img src="./img/blog3.jpg" alt="" class="card-blog__top-image"></div>
                 <div class="card-blog__container">
                   <h2 class="title title--tiny">заголовок статьи</h2>
                   <p class="card-blog__date">12.05.2025</p>
-                  <p class="card-blog__text">
-                    Lorem ipsum dolor sit amet consectet adipiscing elit eget
-                    quamumto. Lorem ipsum dolor sit amet consectet adipiscing
-                    elit eget quamumto.
-                  </p>
-                  <div class="card-blog__button">
-                    ЧИТАТЬ ПОЛНОСТЬЮ
-                    <span class="icon icon-line card-blog__button-icon"></span>
-                  </div>
+                  <p class="card-blog__text">Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto.</p>
+                  <div class="card-blog__button">ЧИТАТЬ ПОЛНОСТЬЮ <span class="icon icon-line card-blog__button-icon"></span></div>
                 </div>
               </a>
               <a href="./blog-detail.html" class="card-blog">
-                <div class="card-blog__top">
-                  <img
-                    src="./img/blog3.jpg"
-                    alt=""
-                    class="card-blog__top-image"
-                  />
-                </div>
+                <div class="card-blog__top"><img src="./img/blog3.jpg" alt="" class="card-blog__top-image"></div>
                 <div class="card-blog__container">
                   <h2 class="title title--tiny">заголовок статьи</h2>
                   <p class="card-blog__date">12.05.2025</p>
-                  <p class="card-blog__text">
-                    Lorem ipsum dolor sit amet consectet adipiscing elit eget
-                    quamumto. Lorem ipsum dolor sit amet consectet adipiscing
-                    elit eget quamumto.
-                  </p>
-                  <div class="card-blog__button">
-                    ЧИТАТЬ ПОЛНОСТЬЮ
-                    <span class="icon icon-line card-blog__button-icon"></span>
-                  </div>
+                  <p class="card-blog__text">Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto.</p>
+                  <div class="card-blog__button">ЧИТАТЬ ПОЛНОСТЬЮ <span class="icon icon-line card-blog__button-icon"></span></div>
                 </div>
               </a>
               <a href="./blog-detail.html" class="card-blog">
-                <div class="card-blog__top">
-                  <img
-                    src="./img/blog3.jpg"
-                    alt=""
-                    class="card-blog__top-image"
-                  />
-                </div>
+                <div class="card-blog__top"><img src="./img/blog3.jpg" alt="" class="card-blog__top-image"></div>
                 <div class="card-blog__container">
                   <h2 class="title title--tiny">заголовок статьи</h2>
                   <p class="card-blog__date">12.05.2025</p>
-                  <p class="card-blog__text">
-                    Lorem ipsum dolor sit amet consectet adipiscing elit eget
-                    quamumto. Lorem ipsum dolor sit amet consectet adipiscing
-                    elit eget quamumto.
-                  </p>
-                  <div class="card-blog__button">
-                    ЧИТАТЬ ПОЛНОСТЬЮ
-                    <span class="icon icon-line card-blog__button-icon"></span>
-                  </div>
+                  <p class="card-blog__text">Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto.</p>
+                  <div class="card-blog__button">ЧИТАТЬ ПОЛНОСТЬЮ <span class="icon icon-line card-blog__button-icon"></span></div>
                 </div>
               </a>
               <a href="./blog-detail.html" class="card-blog">
-                <div class="card-blog__top">
-                  <img
-                    src="./img/blog3.jpg"
-                    alt=""
-                    class="card-blog__top-image"
-                  />
-                </div>
+                <div class="card-blog__top"><img src="./img/blog3.jpg" alt="" class="card-blog__top-image"></div>
                 <div class="card-blog__container">
                   <h2 class="title title--tiny">заголовок статьи</h2>
                   <p class="card-blog__date">12.05.2025</p>
-                  <p class="card-blog__text">
-                    Lorem ipsum dolor sit amet consectet adipiscing elit eget
-                    quamumto. Lorem ipsum dolor sit amet consectet adipiscing
-                    elit eget quamumto.
-                  </p>
-                  <div class="card-blog__button">
-                    ЧИТАТЬ ПОЛНОСТЬЮ
-                    <span class="icon icon-line card-blog__button-icon"></span>
-                  </div>
+                  <p class="card-blog__text">Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto.</p>
+                  <div class="card-blog__button">ЧИТАТЬ ПОЛНОСТЬЮ <span class="icon icon-line card-blog__button-icon"></span></div>
                 </div>
               </a>
             </div>
@@ -301,30 +150,16 @@
     <footer class="footer">
       <div class="footer__container">
         <div class="footer__content">
-          <a href="#" class="footer__logo"
-            ><img
-              src="img/full-logo.svg"
-              alt=""
-              class="footer__logo-img"
-            />/></a
-          >
+          <a href="#" class="footer__logo"><img src="img/full-logo.svg" alt="" class="footer__logo-img">/></a>
           <div class="footer__cont">
-            <p>
-              Lorem ipsum dolor sit amet consectet adipiscing elit eget
-              quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit
-              eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing
-            </p>
+            <p>Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing</p>
             <div class="footer__cont-data">
               <p>г. Город, ул. Уличная, д. 82, этаж 4, офис 488</p>
               <p>ИНН 60000000000 ОГРН 0000000000</p>
             </div>
           </div>
         </div>
-        <div class="footer__nav-one">
-          <a href="./company.html" class="footer__nav-item"> о компании </a
-          ><a href="./blog.html" class="footer__nav-item"> блог </a
-          ><a href="./contact.html" class="footer__nav-item"> контакты </a>
-        </div>
+        <div class="footer__nav-one"><a href="./company.html" class="footer__nav-item"> о компании </a><a href="./blog.html" class="footer__nav-item"> блог </a><a href="./contact.html" class="footer__nav-item"> контакты </a></div>
         <div class="footer__cont-number">
           <div class="footer__text">
             <p class="footer__text-number">+7 900 000 00 00</p>
@@ -332,8 +167,7 @@
           </div>
         </div>
         <p class="footer__prava">© 2025 Все права защищены</p>
-        <a href="#" class="footer__conf">Политика конфиденциальности</a>
-        <a href="#" class="footer__data">Обработка данных</a>
+        <a href="#" class="footer__conf">Политика конфиденциальности</a> <a href="#" class="footer__data">Обработка данных</a>
       </div>
     </footer>
   </body>
