@@ -1,0 +1,49 @@
+---
+import Icon from "./Icon.astro";
+import PreviewContent from "./PreviewContent.astro";
+import PreviewSwiper from "./PreviewSwiper.astro";
+import Section from "./Section.astro";
+
+interface Props {}
+
+const {} = Astro.props;
+---
+
+<section class="preview">
+  <div class="preview__container">
+    <PreviewSwiper />
+    <PreviewContent />
+  </div>
+</section>
+
+<style is:global lang="scss">
+  .preview {
+    @include section;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    // display: flex;
+
+    @include widescreen-min {
+      padding-bottom: 48px;
+      --container-laptop: 1810px;
+    }
+
+    &__container {
+      grid-area: full;
+
+      position: relative;
+      display: grid;
+      gap: 40px;
+      //   grid-template-columns: 1fr auto;
+
+      @include tablet-min {
+        grid-area: center;
+      }
+
+      @include laptop-min {
+        gap: unset;
+        grid-template-columns: auto 1fr;
+      }
+    }
+  }
+</style>

@@ -6,3 +6,4 @@ import "./entity/blog";
 import "./entity/company";
 import "./entity/contact";
 import "./entity/front-page";
+import "./entity/pet-detail";

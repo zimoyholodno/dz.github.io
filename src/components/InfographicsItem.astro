@@ -1,0 +1,65 @@
+---
+interface Props {
+  tag: "div" | "a";
+  href?: string;
+  src: string;
+  text: string;
+}
+
+const { tag = "div", href, src, text } = Astro.props;
+
+const Element = tag;
+---
+
+<Element {href} class="infographics-item">
+  <div class="infographics-item__image">
+    <img {src} alt="" class="infographics-item__img" />
+  </div>
+  <span>{text}</span>
+</Element>
+
+<style is:global lang="scss">
+  .infographics-item {
+    transition: all var(--transition);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 10px;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1;
+
+    &__image {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid var(--color-slate-950);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include laptop-min {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    &__img {
+      width: 16px;
+      height: 16px;
+      @include laptop-min {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+      }
+    }
+    a {
+      transition: color var(--transition);
+    }
+    a:hover {
+      color: var(--color-pink-400);
+    }
+  }
+</style>

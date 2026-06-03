@@ -1,0 +1,273 @@
+---
+import Button from "./Button.astro";
+import Icon from "./Icon.astro";
+
+interface Props {}
+
+const {} = Astro.props;
+
+const title = "ТУАЛЕТНАЯ ВОДА";
+
+const name = "hattai";
+
+const link = "Le Couvent ";
+---
+
+<div class="preview-content">
+  <div class="preview-content__container">
+    <div class="preview-content__rating">
+      <span>4.0</span>
+      <div class="preview-content__rating-cont">
+        {
+          [1, 2, 3, 4, 5].map((item) => (
+            <Icon icon="star" class="preview-content__rating-star" />
+          ))
+        }
+      </div>
+      <span>—</span>
+      <span>48</span>
+    </div>
+    <div class="preview-content__title">
+      <span> {title} </span>
+    </div>
+    <div class="preview-content__name">
+      <a href="#" class="preview-content__name-link">{link}</a>
+      <span> {name} </span>
+    </div>
+  </div>
+
+  <div class="preview-content__main">
+    <div class="preview-content__group">
+      <div class="preview-content__volume">
+        <p>ОБЪЁМ / МЛ</p>
+        <div class="preview-content__volume-items">
+          <div
+            class="preview-content__volume-item preview-content__volume-item--active"
+          >
+            30
+          </div>
+          <div class="preview-content__volume-item">50</div>
+          <div class="preview-content__volume-item">100</div>
+        </div>
+      </div>
+
+      <div class="preview-content__price">
+        <span class="preview-content__price-new"> 24 505 ₽ </span>
+        <span class="preview-content__price-old"> 33 262 ₽</span>
+        <span class="preview-content__price-discount"> со скидкой 25% </span>
+        <span class="preview-content__price-discount--old"> без скидки</span>
+      </div>
+    </div>
+    <div class="preview-content__buttons">
+      <Button variant="black" size="large" inline="large" font="small"
+        >ДОБАВИТЬ В КОРЗИНУ</Button
+      >
+      <Button variant="black" size="same">
+        <Icon icon="like" />
+      </Button>
+      <Button variant="black" size="same">
+        <Icon icon="chart" />
+      </Button>
+    </div>
+  </div>
+</div>
+
+<style is:global lang="scss">
+  .preview-content {
+    padding-inline: var(--container-padding);
+
+    @include tablet-min {
+      padding-inline: unset;
+    }
+
+    &__main {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      @include laptop-min {
+        padding-top: 30px;
+        padding-left: 30px;
+        gap: 50px;
+      }
+      @include widescreen-min {
+        padding-top: 84px;
+        padding-left: 100px;
+      }
+    }
+
+    &__title {
+      font-weight: 600;
+      font-size: 11px;
+      line-height: 1;
+      letter-spacing: 1.65px;
+    }
+
+    &__name {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 1;
+
+      &-link {
+        transition: all var(--transition);
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 1;
+
+        text-transform: uppercase;
+
+        &:hover {
+          color: var(--color-pink-400);
+        }
+
+        @include laptop-min {
+          font-size: 51px;
+        }
+      }
+
+      @include laptop-min {
+        font-size: 55px;
+      }
+    }
+
+    &__rating {
+      display: flex;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 1.4;
+
+      gap: 5px;
+      align-items: center;
+
+      &-cont {
+        display: flex;
+        gap: 5px;
+      }
+
+      &-star {
+        &:last-child {
+          color: var(--color-slate-400);
+        }
+      }
+    }
+
+    &__container {
+      max-width: 714px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+
+      padding-bottom: 30px;
+
+      position: relative;
+      z-index: 20;
+      word-break: break-word;
+
+      @include laptop-min {
+        padding-bottom: unset;
+        left: -60%;
+
+        margin: -55px 0 30px;
+        gap: 30px;
+        // width: 714px;
+        // left: calc(-765px - -100%);
+      }
+
+      @include widescreen-min {
+        margin: -111px 0 7px;
+
+        left: calc(-902px + 100%);
+      }
+    }
+
+    &__group {
+      display: grid;
+      gap: 24px;
+
+      @include laptop-min {
+        gap: 44px;
+      }
+    }
+
+    &__volume {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      font-weight: 600;
+      font-size: 11px;
+      line-height: 100%;
+      letter-spacing: 1.65px;
+
+      &-items {
+        display: flex;
+        gap: 5px;
+      }
+
+      &-item {
+        border: 1px solid var(--color-slate-300);
+        transition: all var(--transition);
+
+        padding: 13px;
+        &--active {
+          border: 1px solid var(--color-slate-950);
+        }
+      }
+    }
+
+    &__price {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 100%;
+      transition: color var(--transition);
+
+      display: grid;
+      grid-template-columns: auto 1fr;
+      row-gap: 15px;
+
+      @include laptop-min {
+        font-size: 24px;
+        row-gap: 21px;
+        column-gap: 10px;
+      }
+
+      @include desktop-min {
+        font-size: 32px;
+      }
+
+      &-old {
+        white-space: pre-wrap;
+        transition: color var(--transition);
+        text-wrap: nowrap;
+
+        color: var(--color-slate-400);
+
+        text-decoration: line-through;
+      }
+
+      &-discount {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1;
+
+        color: var(--color-pink-400);
+
+        &--old {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 100%;
+          color: var(--color-slate-400);
+        }
+      }
+    }
+
+    &__buttons {
+      font-size: 23px;
+      display: grid;
+      gap: 10px;
+
+      @include tablet-min {
+        display: flex;
+      }
+    }
+  }
+</style>

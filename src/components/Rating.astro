@@ -1,0 +1,209 @@
+---
+import Icon from "./Icon.astro";
+import RatingIndicator from "./RatingIndicator.astro";
+import RatingHistogram from "./RatingHistogram.astro";
+import ReviewCard from "./ReviewCard.astro";
+import Title from "./Title.astro";
+
+interface Props {}
+
+const {} = Astro.props;
+
+const list: {
+  name: string;
+  date: string;
+  text: string[];
+
+  star: "one" | "two" | "three" | "four" | "five";
+}[] = [
+  {
+    name: "Елизавета Я.",
+    date: "12 дней назад",
+    text: [
+      "стойкость на 6/10, раскрывается очень приятно, фруктовый и очень легкий аромат",
+    ],
+    star: "one",
+  },
+  {
+    name: "Елизавета Я.",
+    date: "12 дней назад",
+    text: [
+      "стойкость на 6/10, раскрывается очень приятно, фруктовый и очень легкий аромат",
+    ],
+    star: "five",
+  },
+  {
+    name: "Елизавета Я.",
+    date: "12 дней назад",
+    text: [
+      "стойкость на 6/10, раскрывается очень приятно, фруктовый и очень легкий аромат",
+    ],
+    star: "three",
+  },
+];
+
+const hist: { num: number; value: string }[] = [
+  { num: 5, value: "78%" },
+  { num: 4, value: "14%" },
+  { num: 3, value: "2%" },
+  { num: 2, value: "6%" },
+  { num: 1, value: "0%" },
+];
+---
+
+<div class="rating">
+  <div class="rating__container">
+    <div class="rating__title">
+      <Title size="small">рейтинг и отзывы</Title>
+    </div>
+  </div>
+
+  <div class="rating__container rating__container-row">
+    <div class="rating__indicator rating__left">
+      <RatingIndicator value="4.9">
+        <div class="rating__indicator-slot">
+          <div class="rating__indicator-slot--cont">
+            {[1, 2, 3, 4, 5].map(() => <Icon icon="star" />)}
+          </div>
+          <p>оценка товара</p>
+        </div>
+      </RatingIndicator>
+    </div>
+    <div class="rating__indicator">
+      <RatingIndicator value="92%">
+        <span class="rating__indicator-slot">покупателей рекомендуют</span>
+      </RatingIndicator>
+      <RatingIndicator value="49" baseline>
+        <span class="rating__indicator-slot"> отзывов</span>
+      </RatingIndicator>
+    </div>
+  </div>
+  <div class="rating__container">
+    <div class="rating__histogram rating__left">
+      {hist.map(({ value, num }) => <RatingHistogram {value} {num} />)}
+    </div>
+
+    <div class="rating__review">
+      {
+        list.map(({ name, date, text, star }) => (
+          <ReviewCard {name} {date} {text} {star} />
+        ))
+      }
+      <a href="#" class="rating__review-all">
+        СМОТРЕТЬ ВСЕ <div class="rating__review-all--arrow">
+          <Icon icon="line" />
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style is:global lang="scss">
+  .rating {
+    display: grid;
+    gap: 60px;
+
+    @include laptop-min {
+      // padding-top: 23px;
+      gap: 70px;
+    }
+
+    &__left {
+      padding-right: 40px;
+      @include laptop-min {
+        justify-self: end;
+      }
+      @include widescreen-min {
+        padding-right: unset;
+      }
+    }
+
+    &__title {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 1;
+
+      @include laptop-min {
+        grid-column-start: 2;
+        font-size: 35px;
+      }
+    }
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      @include laptop-min {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+        // column-gap: 50px;
+      }
+
+      @include widescreen-min {
+        grid-template-columns: 515px 715px;
+        column-gap: 100px;
+      }
+
+      &-row {
+        @include phone-min {
+          flex-direction: row;
+        }
+      }
+    }
+
+    &__review {
+      display: grid;
+      gap: 26px;
+
+      &-all {
+        display: flex;
+        gap: 5px;
+
+        font-weight: 600;
+        font-size: 11px;
+        line-height: 1;
+        letter-spacing: 1.65px;
+
+        transition: all var(--transition);
+        &--arrow {
+          font-size: 7px;
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    &__indicator {
+      display: grid;
+
+      gap: 30px;
+
+      @include phone-min {
+        display: flex;
+      }
+
+      @include laptop-min {
+        gap: 93px;
+      }
+
+      &-slot {
+        display: grid;
+        gap: 5px;
+
+        &--cont {
+          display: flex;
+          gap: 7px;
+        }
+      }
+    }
+    &__histogram {
+      // display: grid;
+
+      @include laptop-min {
+        max-width: 340px;
+        width: 100%;
+      }
+    }
+  }
+</style>

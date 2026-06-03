@@ -1,0 +1,50 @@
+---
+import InfographicsItem from "./InfographicsItem.astro";
+
+interface Props {}
+
+const {} = Astro.props;
+
+const list: { tag: "div" | "a"; href?: string; src: string; text: string }[] = [
+  {
+    tag: "div",
+    src: "/img/diamond.svg",
+    text: "Гарантия качества продукции",
+  },
+  {
+    tag: "a",
+    href: "#",
+    src: "/img/Free.svg",
+    text: "Бесплатная доставка от 1500 ₽",
+  },
+  {
+    tag: "a",
+    href: "#",
+    src: "/img/Russia.svg",
+    text: "Доставка по всей территории РФ",
+  },
+];
+---
+
+<div class="infographics">
+  {
+    list.map(({ tag, href, src, text }) => (
+      <InfographicsItem tag={tag} {href} {src} {text} />
+    ))
+  }
+</div>
+
+<style is:global lang="scss">
+  .infographics {
+    display: grid;
+    gap: 10px;
+    @include phone-min {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @include laptop-min {
+      gap: 55px;
+      grid-template-columns: 190px 190px 190px;
+    }
+  }
+</style>

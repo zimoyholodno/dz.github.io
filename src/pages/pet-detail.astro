@@ -1,0 +1,36 @@
+---
+import Breadcrumb from "@components/Breadcrumb.astro";
+import Infographics from "@components/Infographics.astro";
+import Layout from "@components/Layout.astro";
+import PetTab from "@components/PetTab.astro";
+import Preview from "@components/Preview.astro";
+
+import Rating from "@components/Rating.astro";
+import Section from "@components/Section.astro";
+import SwiperPet from "@components/SwiperPet.astro";
+
+const title = "Карточка";
+---
+
+<Layout {title} scripts={["pet-detail"]} theme="dark">
+  <Section top="great" bottom="small">
+    <Breadcrumb variant="dot" items={["Главная", title]} color="black" />
+  </Section>
+  <Preview />
+  <Section>
+    <Infographics />
+  </Section>
+  <Section top="large" bottom="medium">
+    <PetTab />
+  </Section>
+  <Section top="great" bottom="small">
+    <Rating />
+  </Section>
+
+  <Section top="medium" bottom="medium">
+    <SwiperPet title="похожие" name="similar" />
+  </Section>
+  <Section top="medium" bottom="large">
+    <SwiperPet title="вам может понравиться" name="like" />
+  </Section>
+</Layout>

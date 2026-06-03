@@ -1,0 +1,55 @@
+---
+interface Props {
+  value: string;
+
+  baseline?: boolean;
+}
+
+const { value, baseline } = Astro.props;
+---
+
+<div
+  class:list={["rating-indicator", baseline && "rating-indicator--baseline"]}
+>
+  <div class="rating-indicator__value">
+    {value}
+  </div>
+
+  <div class="rating-indicator__slot">
+    <slot />
+  </div>
+</div>
+
+<style is:global lang="scss">
+  .rating-indicator {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    max-width: 218px;
+
+    &--baseline {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+
+      max-width: 218px;
+    }
+
+    &__value {
+      font-weight: 600;
+      font-size: 45px;
+      line-height: 1;
+    }
+
+    &__slot {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1;
+
+      @include laptop-min {
+        font-size: 16px;
+      }
+    }
+  }
+</style>

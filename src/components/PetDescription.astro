@@ -1,0 +1,63 @@
+---
+import Prose from "./Prose.astro";
+
+interface Props {
+  title?: string;
+  article?: number;
+  text: string[];
+  property?: boolean;
+}
+
+const { title, article, text, property } = Astro.props;
+---
+
+<div class="pet-description">
+  {title && <h4 class="pet-description__title">{title}</h4>}
+  {article && <p class="pet-description__article">артикул: {article}</p>}
+
+  <Prose variant="tabs">
+    {text.map((item) => <p>{item}</p>)}
+  </Prose>
+  {
+    property && (
+      <h4 class="pet-description__property">подробные характеристики</h4>
+    )
+  }
+</div>
+
+<style is:global lang="scss">
+  .pet-description {
+    // display: flex;
+    // flex-direction: column;
+    // gap: 30px;
+
+    &__title {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1;
+
+      padding-bottom: 20px;
+    }
+
+    &__article {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1;
+
+      color: var(--color-slate-400);
+      padding-bottom: 37px;
+    }
+
+    &__property {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1;
+
+      padding-top: 30px;
+
+      @include laptop-min {
+        padding-top: 56px;
+      }
+    }
+  }
+</style>

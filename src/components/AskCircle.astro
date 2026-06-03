@@ -1,0 +1,89 @@
+---
+interface Props {}
+
+const {} = Astro.props;
+---
+
+<a href="" class="ask-circle">
+  <div class="ask-circle__main">
+    <img
+      src="/img/ask-circle.svg"
+      alt=""
+      class="ask-circle__img ask-circle__img-back"
+    />
+    <img src="/img/ask-main.svg" alt="" class="ask-circle__img" />
+  </div>
+  <div class="ask-circle__text">
+    <p class="ask-circle__text-small">нужна помощь?</p>
+    <p>служба поддержки</p>
+  </div>
+</a>
+
+<style is:global lang="scss">
+  .ask-circle {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding-top: 30px;
+
+    @include laptop-min {
+      padding-top: 50px;
+    }
+
+    &__main {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+
+      width: 100px;
+      height: 100px;
+
+      border-radius: 50px;
+
+      background-color: var(--color-lime-300);
+    }
+
+    &__img {
+      grid-area: 1/ 1;
+      &-back {
+        animation: 6s linear infinite rotate;
+        animation-play-state: paused;
+      }
+    }
+
+    &__text {
+      display: grid;
+      gap: 15px;
+      font-weight: 600;
+      font-size: 16px;
+
+      line-height: 1;
+
+      color: var(--color-slate-950);
+
+      &-small {
+        font-weight: 400;
+        font-size: 11px;
+
+        line-height: 1;
+
+        color: var(--color-slate-400);
+      }
+    }
+
+    &:hover &__img-back {
+      animation-play-state: running;
+    }
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>

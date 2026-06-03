@@ -1,0 +1,46 @@
+---
+interface Props {
+  text?: string;
+  active?: boolean;
+  href?: string;
+}
+
+const { text, active, href } = Astro.props;
+
+const Element = href ? "a" : "div";
+---
+
+<Element {href} class:list={["pill", { "pill--active": active }]}>
+  <slot />
+  {text && <span>{text}</span>}
+</Element>
+
+<style is:global lang="scss">
+  .pill {
+    // width: 40px;
+    // height: 40px;
+    display: flex;
+
+    justify-content: center;
+
+    text-wrap: nowrap;
+    // align-items: center;
+    cursor: pointer;
+    transition: all var(--transition);
+
+    min-height: 30px;
+    color: var(--color-slate-400);
+
+    @include laptop-min {
+      // width: 50px;
+      // height: 50px;
+    }
+
+    &--active {
+      // background-color: var(--color-orange);
+      color: var(--color-slate-950);
+
+      border-bottom: 2px solid var(--color-slate-950);
+    }
+  }
+</style>

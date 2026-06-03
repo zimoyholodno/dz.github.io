@@ -1,0 +1,80 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  num: number;
+  value: string;
+}
+
+const { value, num } = Astro.props;
+---
+
+<div class="rating-histogram">
+  <div class="rating-histogram__star">
+    <span>
+      {num}
+    </span>
+    <Icon icon="star" />
+  </div>
+  <div class="rating-histogram__line" style={`--value: ${value};`}></div>
+
+  <span class="rating-histogram__percent">
+    {value}
+  </span>
+</div>
+
+<style is:global lang="scss">
+  .rating-histogram {
+    $rating-count: var(--value);
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &:last-child &__percent {
+      color: var(--color-slate-400);
+    }
+
+    @include laptop-min {
+      max-width: 340px;
+      width: 100%;
+    }
+
+    &__star {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: center;
+      align-items: center;
+      width: 40px;
+      gap: 5px;
+
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1.6;
+
+      @include laptop-min {
+        font-size: 16px;
+      }
+    }
+
+    &__line {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(
+        to right,
+
+        var(--color-slate-950) $rating-count,
+        var(--color-slate-200) $rating-count
+      );
+    }
+
+    &__percent {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.6;
+      width: 40px;
+
+      text-align: end;
+    }
+  }
+</style>
