@@ -6,43 +6,520 @@
     <meta name="format-detection" content="telephone=no">
     <title>Главная страница</title>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
-    <link rel="stylesheet" href="./fonts/icons/icons.css?v=0.07909672">
-    <link rel="stylesheet" href="./css/custom-style.css?v=0.07909677">
-    <script type="module" src="./js/general.js?v=0.07909672"></script>
-    <script type="module" src="./js/front-page.js?v=0.07909672"></script>
+    <link rel="stylesheet" href="./css/lightgallery-bundle.min.css">
+    <link rel="stylesheet" href="./css/swiper-bundle.css">
+    <link rel="stylesheet" href="./fonts/icons/icons.css?v=0.11332281">
+    <link rel="stylesheet" href="./css/custom-style.css?v=0.11332369">
+    <script type="module" src="./js/general.js?v=0.11332281"></script>
+    <script type="module" src="./js/front-page.js?v=0.11332281"></script>
   </head>
   <body>
     <header class="header">
       <div class="header__container">
-        <div class="header__mobile">
-          mobile header
-          <button class="burger" data-drawer-trigger="mobile-menu" data-open="false"><span class="icon icon-burger burger__icon"></span> <span class="icon icon-cross burger__open"></span></button>
-        </div>
-        <div class="header__desktop">desktop header</div>
-      </div>
-      <div class="drawer drawer--left drawer--primary" data-drawer-container="mobile-menu" data-open="false">
-        <div class="drawer__back" data-drawer-close="mobile-menu"></div>
-        <div class="drawer__container">
-          <div class="drawer__content">
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam unde suscipit ab autem optio beatae aliquid voluptas, illum sint a tenetur hic excepturi, laudantium assumenda quam corrupti modi reiciendis ex.</p>
-            <button data-drawer-close="mobile-menu" class="button button--variant-black button--size-small">Закрыть</button>
+        <div class="header__desktop">
+          <a href="./index.html" class="header__logo"> <span class="icon icon-logo header__logo-img"></span> </a>
+          <div class="header__navigation">
+            <div class="navigation"><a href="./company.html" class="navigation__item"> о компании </a><a href="./blog.html" class="navigation__item"> блог </a><a href="./contact.html" class="navigation__item"> контакты </a></div>
           </div>
         </div>
       </div>
+      <div class="header__mobile">
+        <button class="burger" data-drawer-trigger="mobile-menu" data-open="false"><span class="icon icon-burger burger__icon"></span> <span class="icon icon-cross burger__open"></span></button> <a href="./index.html" class="header__logo"> <span class="icon icon-logo header__logo-img"></span> </a>
+      </div>
     </header>
-    <main class="main">
-      <div class="section section--center"><div class="section__container">123123123</div></div>
-    </main>
-    <footer class="footer"><div class="footer__container">footer</div></footer>
-    <div class="cookie-banner">
-      <button data-cookie-close="" class="cookie-banner__close icon-cross"></button>
-      <div class="cookie-banner__container">
-        <div class="cookie-banner__content">
-          <div class="cookie-banner__title">Наш сайт использует cookie</div>
-          <p class="cookie-banner__text">Сайт использует cookie-файлы для обеспечения удобства пользователей, анализа посещаемости и улучшения работы сервиса. Продолжая использовать сайт, вы соглашаетесь с обработкой этих данных в соответствии с нашей политикой конфиденциальности.</p>
+    <div class="drawer drawer--left drawer--primary" data-drawer-container="mobile-menu" data-open="false">
+      <div class="drawer__back" data-drawer-close="mobile-menu"></div>
+      <div class="drawer__container">
+        <div class="drawer__content">
+          <div class="navigation"><a href="./company.html" class="navigation__item"> о компании </a><a href="./blog.html" class="navigation__item"> блог </a><a href="./contact.html" class="navigation__item"> контакты </a></div>
         </div>
-        <button data-cookie-accept="true" class="button button--variant-black button--size-small">Принять</button>
       </div>
     </div>
+    <main class="main">
+      <section class="hero" style="--hero-bg: url(./img/hero.png)">
+        <img src="./img/hero.png" alt="" loading="lazy" class="hero__back">
+        <div class="hero__container">
+          <div class="main-hero">
+            <a href="" class="main-hero__logo"> <img src="./img/full-logo.svg" alt="hero" class="main-hero__logo-img"> </a>
+          </div>
+        </div>
+      </section>
+      <div class="section section--full section--laptop-center section--top-small section--border-bottom">
+        <div class="section__container">
+          <div class="category-pill-list">
+            <div class="category-pill-list__container">
+              <div class="category-pill">
+                <div class="category-pill__image"><img src="img/category/one.png" alt="pets" loading="lazy" class="category-pill__img"></div>
+                <span>собаки</span>
+              </div>
+              <div class="category-pill">
+                <div class="category-pill__image"><img src="img/category/two.png" alt="pets" loading="lazy" class="category-pill__img"></div>
+                <span>кошки</span>
+              </div>
+              <div class="category-pill">
+                <div class="category-pill__image"><img src="img/category/three.png" alt="pets" loading="lazy" class="category-pill__img"></div>
+                <span>щенки&nbsp;и котята</span>
+              </div>
+              <div class="category-pill">
+                <div class="category-pill__image"><img src="img/category/four.png" alt="pets" loading="lazy" class="category-pill__img"></div>
+                <span>грызуны</span>
+              </div>
+              <div class="category-pill">
+                <div class="category-pill__image"><img src="img/category/five.png" alt="pets" loading="lazy" class="category-pill__img"></div>
+                <span>животные с особенностями</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section section--full section--phone-center section--bottom-large">
+        <div class="section__container">
+          <div id="pet-grid" class="pet-grid pet-grid--fancy">
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/dog/1.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">2 года</div>
+                <div class="pet-card__name">Бублик</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/cat/1.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">1.5 года</div>
+                <div class="pet-card__name">Сосиска</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/rodents/1.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top"><div class="card-label card-label--yellow">Привит</div></div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">6 месяцев</div>
+                <div class="pet-card__name">Шарик-Компотик</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/bird/1.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top"><div class="card-label card-label--yellow">Привит</div></div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">1 год</div>
+                <div class="pet-card__name">Кеша-Печенька</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/dog/2.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">3 года</div>
+                <div class="pet-card__name">Пельмень</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/cat/2.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">4 года</div>
+                <div class="pet-card__name">Ватрушка</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/rodents/2.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top"><div class="card-label card-label--pink">Стерилизован</div></div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">8 месяцев</div>
+                <div class="pet-card__name">Сырник</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/bird/2.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top"><div class="card-label card-label--yellow">Привит</div></div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">2 года</div>
+                <div class="pet-card__name">Гоша-Кокос</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/dog/3.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">1.5 года</div>
+                <div class="pet-card__name">Зефир</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/cat/3.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">5 лет</div>
+                <div class="pet-card__name">Мармеладка</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/rodents/3.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer"><div class="pet-card__layer-top"></div></div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">4 месяца</div>
+                <div class="pet-card__name">Пуффик-Кефирчик</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/bird/3.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">3 года</div>
+                <div class="pet-card__name">Жорик-Бублик</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/dog/4.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top"><div class="card-label card-label--yellow">Привит</div></div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">7 месяцев</div>
+                <div class="pet-card__name">Тофу</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/cat/4.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">2.5 года</div>
+                <div class="pet-card__name">Котлета</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/rodents/4.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">1 год</div>
+                <div class="pet-card__name">Хомя-Кукурузя</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/bird/4.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer"><div class="pet-card__layer-top"></div></div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">6 месяцев</div>
+                <div class="pet-card__name">Петруша-Одуван</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/dog/5.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">4 года</div>
+                <div class="pet-card__name">Веник</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/cat/5.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top"><div class="card-label card-label--yellow">Привит</div></div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">1 год</div>
+                <div class="pet-card__name">Сметанка</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/rodents/5.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top"><div class="card-label card-label--pink">Стерилизован</div></div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">9 месяцев</div>
+                <div class="pet-card__name">Пышка-Топтыжка</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/bird/5.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">1.5 года</div>
+                <div class="pet-card__name">Аркаша-Фунтик</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/dog/6.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">2 года</div>
+                <div class="pet-card__name">Гамбургер</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/cat/6.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">3 года</div>
+                <div class="pet-card__name">Нутелла</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/rodents/6.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top"><div class="card-label card-label--yellow">Привит</div></div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">5 месяцев</div>
+                <div class="pet-card__name">Шурупчик</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/bird/6.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top"><div class="card-label card-label--yellow">Привит</div></div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">2 года</div>
+                <div class="pet-card__name">Тимоха-Батон</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/dog/7.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">1 год</div>
+                <div class="pet-card__name">Пончик</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/cat/7.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top"><div class="card-label card-label--pink">Стерилизован</div></div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">6 лет</div>
+                <div class="pet-card__name">Ириска</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/rodents/7.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">10 месяцев</div>
+                <div class="pet-card__name">Паштетик</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/bird/7.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top"><div class="card-label card-label--yellow">Привит</div></div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">1 год</div>
+                <div class="pet-card__name">Рома-Бананчик</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/cat/8.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top"><div class="card-label card-label--yellow">Привит</div></div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">4 месяца</div>
+                <div class="pet-card__name">Валерий</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/dog/8.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">7 лет</div>
+                <div class="pet-card__name">Евгений</div>
+              </div>
+            </a>
+            <a href="pet-detail.html" class="pet-card">
+              <div class="pet-card__top">
+                <img src="img/hourse.jpg" alt="" class="pet-card__image" loading="lazy">
+                <div class="pet-card__layer">
+                  <div class="pet-card__layer-top">
+                    <div class="card-label card-label--yellow">Привит</div>
+                    <div class="card-label card-label--pink">Стерилизован</div>
+                  </div>
+                </div>
+              </div>
+              <div class="pet-card__bottom">
+                <div class="pet-card__title">3 года</div>
+                <div class="pet-card__name">Нупапа</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__content">
+          <a href="#" class="footer__logo"><img src="img/full-logo.svg" alt="" class="footer__logo-img">/></a>
+          <div class="footer__cont">
+            <p>Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing</p>
+            <div class="footer__cont-data">
+              <p>г. Город, ул. Уличная, д. 82, этаж 4, офис 488</p>
+              <p>ИНН 60000000000 ОГРН 0000000000</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer__nav-one"><a href="./company.html" class="footer__nav-item"> о компании </a><a href="./blog.html" class="footer__nav-item"> блог </a><a href="./contact.html" class="footer__nav-item"> контакты </a></div>
+        <div class="footer__cont-number">
+          <div class="footer__text">
+            <p class="footer__text-number">+7 900 000 00 00</p>
+            <p class="footer__mail">example@email.com</p>
+          </div>
+        </div>
+        <p class="footer__prava">© 2025 Все права защищены</p>
+        <a href="#" class="footer__conf">Политика конфиденциальности</a> <a href="#" class="footer__data">Обработка данных</a>
+      </div>
+    </footer>
   </body>
 </html>

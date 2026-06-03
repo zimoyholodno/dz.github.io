@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="format-detection" content="telephone=no">
+    <title>Контакты</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="stylesheet" href="./css/lightgallery-bundle.min.css">
+    <link rel="stylesheet" href="./css/swiper-bundle.css">
+    <link rel="stylesheet" href="./fonts/icons/icons.css?v=0.11332145">
+    <script src="https://api-maps.yandex.ru/v3/?apikey=ae41f16c-aec8-4cf7-b76b-8cd0b1fd4acc&amp;lang=ru_RU" defer=""></script>
+    <link rel="stylesheet" href="./css/custom-style.css?v=0.11332369">
+    <script type="module" src="./js/general.js?v=0.11332145"></script>
+    <script type="module" src="./js/contact.js?v=0.11332145"></script>
+  </head>
+  <body>
+    <header class="header header--dark">
+      <div class="header__container">
+        <div class="header__desktop">
+          <a href="./index.html" class="header__logo"> <span class="icon icon-logo header__logo-img"></span> </a>
+          <div class="header__navigation">
+            <div class="navigation"><a href="./company.html" class="navigation__item"> о компании </a><a href="./blog.html" class="navigation__item"> блог </a><a href="./contact.html" class="navigation__item"> контакты </a></div>
+          </div>
+        </div>
+      </div>
+      <div class="header__mobile">
+        <button class="burger" data-drawer-trigger="mobile-menu" data-open="false"><span class="icon icon-burger burger__icon"></span> <span class="icon icon-cross burger__open"></span></button> <a href="./index.html" class="header__logo"> <span class="icon icon-logo header__logo-img"></span> </a>
+      </div>
+    </header>
+    <div class="drawer drawer--left drawer--primary" data-drawer-container="mobile-menu" data-open="false">
+      <div class="drawer__back" data-drawer-close="mobile-menu"></div>
+      <div class="drawer__container">
+        <div class="drawer__content">
+          <div class="navigation"><a href="./company.html" class="navigation__item"> о компании </a><a href="./blog.html" class="navigation__item"> блог </a><a href="./contact.html" class="navigation__item"> контакты </a></div>
+        </div>
+      </div>
+    </div>
+    <main class="main">
+      <div class="section section--center section--bottom-large section--top-great">
+        <div class="section__container">
+          <div class="contacts">
+            <div class="contact-data">
+              <div class="contact-data__slot">
+                <div class="breadcrumb breadcrumb--dot breadcrumb--black">
+                  <div class="breadcrumb__container">
+                    <span>
+                      <span> <a href="#">Главная</a> </span> <span class="breadcrumb_last">Контакты</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <h2 class="title title--medium">контакты</h2>
+              <div class="contact-data__cont">
+                <a href="#" class="contact-data__number">+7 900 000 00 00</a> <a href="#" class="contact-data__mail">example@email.com</a>
+                <div class="contact-data__text">
+                  <p>г. Город, ул. Уличная, д. 82, этаж 4, офис 488</p>
+                  <p class="contact-data__text-cont"><span>ИНН 60000000000</span> <span> ОГРН 0000000000 </span></p>
+                </div>
+              </div>
+              <div class="contact-data__bottom"><button class="button button--variant-black button--size-medium button--font-small">ОБРАТНАЯ СВЯЗЬ</button></div>
+            </div>
+            <div class="contacts__map"><div id="map" class="yandex-map"></div></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__content">
+          <a href="#" class="footer__logo"><img src="img/full-logo.svg" alt="" class="footer__logo-img">/></a>
+          <div class="footer__cont">
+            <p>Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing elit eget quamumto. Lorem ipsum dolor sit amet consectet adipiscing</p>
+            <div class="footer__cont-data">
+              <p>г. Город, ул. Уличная, д. 82, этаж 4, офис 488</p>
+              <p>ИНН 60000000000 ОГРН 0000000000</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer__nav-one"><a href="./company.html" class="footer__nav-item"> о компании </a><a href="./blog.html" class="footer__nav-item"> блог </a><a href="./contact.html" class="footer__nav-item"> контакты </a></div>
+        <div class="footer__cont-number">
+          <div class="footer__text">
+            <p class="footer__text-number">+7 900 000 00 00</p>
+            <p class="footer__mail">example@email.com</p>
+          </div>
+        </div>
+        <p class="footer__prava">© 2025 Все права защищены</p>
+        <a href="#" class="footer__conf">Политика конфиденциальности</a> <a href="#" class="footer__data">Обработка данных</a>
+      </div>
+    </footer>
+  </body>
+</html>
