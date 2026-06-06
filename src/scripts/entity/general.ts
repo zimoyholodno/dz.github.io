@@ -24,3 +24,4 @@ import "@lib/form";
 initCookieBanner(".cookie-banner");
 import "@lib/select";
 import "@lib/tab";
+import "@lib/header";
