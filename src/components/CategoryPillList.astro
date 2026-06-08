@@ -12,16 +12,18 @@ const list: { src: string; name: string }[] = [
   { src: "img/category/three.png", name: "щенки и котята" },
   { src: "img/category/four.png", name: "грызуны" },
   { src: "img/category/five.png", name: "животные с особенностями" },
-  // { src: "img/category/six.png", name: "стерилизованные питомцы" },
-  // { src: "img/category/seven.png", name: "привитые животные" },
+  { src: "img/category/six.png", name: "стерилизованные питомцы" },
+  { src: "img/category/seven.png", name: "привитые животные" },
 ];
 ---
 
 <Section top="small" border="bottom" position="full" laptop="center">
-  <div class="category-pill-list">
-    <div class="category-pill-list__container">
+  <div class="category-pill-list swiper">
+    <div class="category-pill-list__container swiper-wrapper">
       {list.map(({ src, name }) => <CategoryPill {src} {name} />)}
     </div>
+    <div class="category-pill-list__nav-next"></div>
+    <div class="category-pill-list__nav-prev"></div>
   </div>
 </Section>
 
@@ -31,28 +33,58 @@ const list: { src: string; name: string }[] = [
     height: 100%;
     padding-bottom: 20px;
 
-    scroll-behavior: smooth;
-    scrollbar-width: thin;
-    overflow: auto;
+    // scroll-behavior: smooth;
+    // scrollbar-width: thin;
+    // overflow: auto;
     // margin-left: var(--container-offset);
+    position: relative;
 
     @include laptop-min {
       padding-bottom: 30px;
     }
+    &__nav {
+      &-next,
+      &-prev {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 60px;
+        z-index: 20;
+        transition: var(--transition);
+        transition-property: opacity, visible;
+        opacity: 1;
+        visibility: visible;
+      }
+      &-next {
+        right: 0;
+        background: linear-gradient(
+          to left,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
+      &-prev {
+        left: 0;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
+    }
 
-    @include laptop-min {
-      margin-left: unset;
+    .swiper-button-disabled {
+      opacity: 0;
+      visibility: 0;
     }
 
     &__container {
-      width: 100%;
+      // width: 100%;
 
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 5px;
-
-      @include laptop-min {
-        gap: 15px;
+      display: flex;
+      .swiper-slide {
+        width: auto !important;
+        max-width: 270px;
       }
     }
   }

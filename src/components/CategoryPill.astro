@@ -7,7 +7,7 @@ interface Props {
 const { src, name } = Astro.props;
 ---
 
-<div class="category-pill">
+<div class="category-pill swiper-slide">
   <div class="category-pill__image">
     <img {src} alt="pets" loading="lazy" class="category-pill__img" />
   </div>
@@ -50,20 +50,20 @@ const { src, name } = Astro.props;
       opacity: 1;
     }
 
-    &:first-child {
-      margin-left: var(--container-offset);
+    // &:first-child {
+    //   margin-left: var(--container-offset);
 
-      @include laptop-min {
-        margin-left: unset;
-      }
-    }
+    //   @include laptop-min {
+    //     margin-left: unset;
+    //   }
+    // }
 
-    &:last-child {
-      margin-right: var(--container-offset);
-      @include laptop-min {
-        margin-right: unset;
-      }
-    }
+    // &:last-child {
+    //   margin-right: var(--container-offset);
+    //   @include laptop-min {
+    //     margin-right: unset;
+    //   }
+    // }
 
     &__image {
       width: 60px;
