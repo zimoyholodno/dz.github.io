@@ -9,9 +9,10 @@ interface Props {
 
   title: string;
   age: string;
+  star: "one" | "two" | "three" | "four" | "five";
 }
 
-const { src, sterilized, vaccinated, title, age } = Astro.props;
+const { src, sterilized, vaccinated, title, age, star } = Astro.props;
 ---
 
 <a href="pet-detail.html" class="pet-card">
@@ -26,6 +27,24 @@ const { src, sterilized, vaccinated, title, age } = Astro.props;
     </div>
   </div>
   <div class="pet-card__bottom">
+    <div class="pet-card__rating">
+      <span>4.0</span>
+      <div class="pet-card__rating-cont">
+        {
+          [1, 2, 3, 4, 5].map(() => (
+            <Icon
+              icon="star"
+              class:list={[
+                "pet-card__star-item",
+                star && `pet-card__star-item--${star}`,
+              ]}
+            />
+          ))
+        }
+      </div>
+      <span>—</span>
+      <span>{Math.floor(Math.random() * 100) + 1}</span>
+    </div>
     <div class="pet-card__title">{age}</div>
     <div class="pet-card__name">{title}</div>
   </div>
