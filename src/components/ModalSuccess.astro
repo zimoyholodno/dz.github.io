@@ -1,0 +1,24 @@
+---
+import Modal from "./Modal.astro";
+import Title from "./Title.astro";
+
+interface Props {}
+
+const {} = Astro.props;
+---
+
+<Modal width="small" id="modal-success">
+  <div class="modal-success">
+    <Title size="small">Форма отправлена</Title>
+  </div>
+</Modal>
+
+<style is:global lang="scss">
+  .modal-success {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+  }
+</style>

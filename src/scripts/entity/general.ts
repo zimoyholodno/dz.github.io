@@ -2,7 +2,6 @@
  *  Файл для общих скриптов на всех страницах
  */
 
-import { initCookieBanner } from "@lib/init-cookie-banner";
 import { initDrawer } from "@lib/init-drawer";
 import { initPageWidth } from "@lib/page-width";
 
@@ -20,8 +19,24 @@ import "@lib/mask-phone";
 // работа с формами
 import "@lib/form";
 
-// cookie
-initCookieBanner(".cookie-banner");
 import "@lib/select";
 import "@lib/tab";
 import "@lib/header";
+
+import MicroModal from "micromodal";
+
+MicroModal.init({
+  awaitCloseAnimation: true,
+  disableScroll: true,
+});
+
+const form = document.querySelector("#main-form");
+if (form instanceof HTMLFormElement) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    setTimeout(() => {
+      MicroModal.show("modal-success");
+    }, 500);
+  });
+}

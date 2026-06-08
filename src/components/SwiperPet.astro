@@ -12,13 +12,22 @@ interface Props {
 
 const { title, name } = Astro.props;
 
-const list = [
+const list: {
+  src: string;
+  sterilized?: boolean;
+  vaccinated?: boolean;
+
+  title: string;
+  age: string;
+  star: "one" | "two" | "three" | "four" | "five";
+}[] = [
   {
     src: "img/dog/1.jpg",
     sterilized: true,
     vaccinated: true,
     title: "Бублик",
     age: "2 года",
+    star: "five",
   },
   {
     src: "img/cat/1.jpg",
@@ -26,6 +35,7 @@ const list = [
     vaccinated: true,
     title: "Сосиска",
     age: "1.5 года",
+    star: "four",
   },
   {
     src: "img/rodents/1.jpg",
@@ -33,6 +43,7 @@ const list = [
     vaccinated: true,
     title: "Шарик-Компотик",
     age: "6 месяцев",
+    star: "three",
   },
   {
     src: "img/bird/1.jpg",
@@ -40,6 +51,7 @@ const list = [
     vaccinated: true,
     title: "Кеша-Печенька",
     age: "1 год",
+    star: "four",
   },
   {
     src: "img/dog/2.jpg",
@@ -47,6 +59,7 @@ const list = [
     vaccinated: true,
     title: "Пельмень",
     age: "3 года",
+    star: "five",
   },
   {
     src: "img/cat/2.jpg",
@@ -54,6 +67,7 @@ const list = [
     vaccinated: true,
     title: "Ватрушка",
     age: "4 года",
+    star: "four",
   },
   {
     src: "img/rodents/2.jpg",
@@ -61,6 +75,7 @@ const list = [
     vaccinated: false,
     title: "Сырник",
     age: "8 месяцев",
+    star: "three",
   },
   {
     src: "img/bird/2.jpg",
@@ -68,6 +83,7 @@ const list = [
     vaccinated: true,
     title: "Гоша-Кокос",
     age: "2 года",
+    star: "four",
   },
   {
     src: "img/dog/3.jpg",
@@ -75,6 +91,7 @@ const list = [
     vaccinated: true,
     title: "Зефир",
     age: "1.5 года",
+    star: "five",
   },
   {
     src: "img/cat/3.jpg",
@@ -82,6 +99,7 @@ const list = [
     vaccinated: true,
     title: "Мармеладка",
     age: "5 лет",
+    star: "four",
   },
   {
     src: "img/rodents/3.jpg",
@@ -89,6 +107,7 @@ const list = [
     vaccinated: false,
     title: "Пуффик-Кефирчик",
     age: "4 месяца",
+    star: "two",
   },
   {
     src: "img/bird/3.jpg",
@@ -96,6 +115,7 @@ const list = [
     vaccinated: true,
     title: "Жорик-Бублик",
     age: "3 года",
+    star: "four",
   },
   {
     src: "img/dog/4.jpg",
@@ -103,6 +123,7 @@ const list = [
     vaccinated: true,
     title: "Тофу",
     age: "7 месяцев",
+    star: "three",
   },
   {
     src: "img/cat/4.jpg",
@@ -110,6 +131,7 @@ const list = [
     vaccinated: true,
     title: "Котлета",
     age: "2.5 года",
+    star: "five",
   },
   {
     src: "img/rodents/4.jpg",
@@ -117,6 +139,7 @@ const list = [
     vaccinated: true,
     title: "Хомя-Кукурузя",
     age: "1 год",
+    star: "three",
   },
   {
     src: "img/bird/4.jpg",
@@ -124,6 +147,7 @@ const list = [
     vaccinated: false,
     title: "Петруша-Одуван",
     age: "6 месяцев",
+    star: "two",
   },
   {
     src: "img/dog/5.jpg",
@@ -131,6 +155,7 @@ const list = [
     vaccinated: true,
     title: "Веник",
     age: "4 года",
+    star: "four",
   },
   {
     src: "img/cat/5.jpg",
@@ -138,6 +163,7 @@ const list = [
     vaccinated: true,
     title: "Сметанка",
     age: "1 год",
+    star: "four",
   },
   {
     src: "img/rodents/5.jpg",
@@ -145,6 +171,7 @@ const list = [
     vaccinated: false,
     title: "Пышка-Топтыжка",
     age: "9 месяцев",
+    star: "three",
   },
   {
     src: "img/bird/5.jpg",
@@ -152,6 +179,7 @@ const list = [
     vaccinated: true,
     title: "Аркаша-Фунтик",
     age: "1.5 года",
+    star: "five",
   },
   {
     src: "img/dog/6.jpg",
@@ -159,6 +187,7 @@ const list = [
     vaccinated: true,
     title: "Гамбургер",
     age: "2 года",
+    star: "five",
   },
   {
     src: "img/cat/6.jpg",
@@ -166,6 +195,7 @@ const list = [
     vaccinated: true,
     title: "Нутелла",
     age: "3 года",
+    star: "four",
   },
   {
     src: "img/rodents/6.jpg",
@@ -173,6 +203,7 @@ const list = [
     vaccinated: true,
     title: "Шурупчик",
     age: "5 месяцев",
+    star: "three",
   },
   {
     src: "img/bird/6.jpg",
@@ -180,6 +211,7 @@ const list = [
     vaccinated: true,
     title: "Тимоха-Батон",
     age: "2 года",
+    star: "four",
   },
   {
     src: "img/dog/7.jpg",
@@ -187,6 +219,7 @@ const list = [
     vaccinated: true,
     title: "Пончик",
     age: "1 год",
+    star: "five",
   },
   {
     src: "img/cat/7.jpg",
@@ -194,6 +227,7 @@ const list = [
     vaccinated: false,
     title: "Ириска",
     age: "6 лет",
+    star: "four",
   },
   {
     src: "img/rodents/7.jpg",
@@ -201,6 +235,7 @@ const list = [
     vaccinated: true,
     title: "Паштетик",
     age: "10 месяцев",
+    star: "three",
   },
   {
     src: "img/bird/7.jpg",
@@ -208,6 +243,7 @@ const list = [
     vaccinated: true,
     title: "Рома-Бананчик",
     age: "1 год",
+    star: "four",
   },
   // {
   //   src: "img/bird/8.jpg",
@@ -222,6 +258,7 @@ const list = [
     vaccinated: true,
     title: "Валерий",
     age: "4 месяца",
+    star: "three",
   },
   {
     src: "img/dog/8.jpg",
@@ -229,6 +266,7 @@ const list = [
     vaccinated: true,
     title: "Евгений",
     age: "7 лет",
+    star: "four",
   },
   {
     src: "img/hourse.jpg",
@@ -236,6 +274,7 @@ const list = [
     vaccinated: true,
     title: "Нупапа",
     age: "3 года",
+    star: "five",
   },
 ];
 ---

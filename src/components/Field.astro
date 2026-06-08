@@ -11,9 +11,11 @@ interface Props extends Omit<HTMLAttributes<"div">, "class"> {
    * Сообщение об ошибке под инпутом
    */
   error?: string;
+
+  under?: string;
 }
 
-const { label, error, ...restProps } = Astro.props;
+const { label, error, under, ...restProps } = Astro.props;
 ---
 
 <div {...restProps} class="field">
@@ -23,31 +25,54 @@ const { label, error, ...restProps } = Astro.props;
     <slot />
   </div>
 
-  {error ? <div class="field__error">{error}</div> : null}
+  {
+    error ? (
+      <div class="field__bottom">
+        <div class="field__error">{error}</div>
+        {under ? <div class="field__under">{under}</div> : null}
+      </div>
+    ) : null
+  }
 </div>
 
 <style is:global lang="scss">
   .field {
     position: relative;
     display: grid;
-    gap: 4px;
+    gap: 13px;
 
     &__label {
+      font-weight: 400;
+      font-size: 14px;
       line-height: 1;
-      font-weight: 500;
+      color: var(--color-slate-400);
     }
 
     &__input {
       display: grid;
     }
 
+    &__bottom {
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
     &__error {
-      position: absolute;
-      color: red;
-      font-size: 12px;
+      // position: absolute;
+      color: var(--color-pink-400);
+
+      font-weight: 400;
+      font-size: 14px;
       line-height: 1;
-      bottom: -1.2em;
-      font-weight: 500;
+    }
+
+    &__under {
+      // position: absolute;
+
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1;
     }
   }
 </style>

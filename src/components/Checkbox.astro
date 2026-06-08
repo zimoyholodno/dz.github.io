@@ -24,8 +24,8 @@ const { id, ...restProps } = Astro.props;
 <style is:global lang="scss">
   .checkbox {
     display: flex;
-    gap: 8px;
-    align-items: center;
+    gap: 16px;
+    // align-items: center;
 
     &__element {
       -webkit-appearance: none;
@@ -42,7 +42,9 @@ const { id, ...restProps } = Astro.props;
       user-select: none;
       flex-shrink: 0;
 
-      background-color: gainsboro;
+      border: 0.78px solid var(--color-slate-400);
+
+      // background-color: gainsboro;
       width: 16px;
       height: 16px;
       cursor: pointer;
@@ -61,6 +63,16 @@ const { id, ...restProps } = Astro.props;
     }
 
     &__label {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1;
+
+      cursor: pointer;
+      color: var(--color-slate-400);
+
+      & a {
+        color: var(--color-pink-400);
+      }
     }
   }
 </style>

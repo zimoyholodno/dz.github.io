@@ -17,7 +17,14 @@ const { src, sterilized, vaccinated, title, age, star } = Astro.props;
 
 <a href="pet-detail.html" class="pet-card">
   <div class="pet-card__top">
-    <img {src} alt="" class="pet-card__image" loading="lazy" />
+    <img
+      {src}
+      alt=""
+      class="pet-card__image"
+      loading="lazy"
+      width="200"
+      height="200"
+    />
     <div class="pet-card__layer">
       <div class="pet-card__layer-top">
         {vaccinated && <CardLabel text="Привит" color="yellow" />}
@@ -56,6 +63,7 @@ const { src, sterilized, vaccinated, title, age, star } = Astro.props;
     grid-template-rows: auto 1fr;
     grid-template-columns: 100%;
     gap: 20px;
+    overflow: hidden;
 
     cursor: pointer;
 

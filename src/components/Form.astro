@@ -1,0 +1,118 @@
+---
+import Button from "./Button.astro";
+import Checkbox from "./Checkbox.astro";
+import Field from "./Field.astro";
+import Input from "./Input.astro";
+import Title from "./Title.astro";
+
+interface Props {}
+
+const {} = Astro.props;
+---
+
+<div class="form">
+  <form id="main-form" class="form__main">
+    <img src="/img/form.jpg" alt="form" loading="lazy" class="form__image" />
+
+    <Title size="small">Забери меня</Title>
+    <div class="form__inputs">
+      <Field label="имя">
+        <Input
+          name={"name"}
+          placeholder={"введите ваше имя "}
+          id="name"
+          required
+        />
+      </Field>
+
+      <Field label="телефон">
+        <Input
+          placeholder="+7 (900) 000 - 00 - 00"
+          name={"phone"}
+          id="phone"
+          mask="phone"
+          required
+        />
+      </Field>
+      <Field label="питомец, который вас заинтересовал">
+        <Input
+          placeholder={"введите имя питомца"}
+          name={"pet"}
+          id="pet"
+          required
+        />
+      </Field>
+      <Field label="ваш вопрос">
+        <Input
+          placeholder={"введите ваш вопрос"}
+          name={"question"}
+          id="question"
+        />
+      </Field>
+      <Checkbox name={"agree"} id="agree" required
+        >я даю согласие на <a href="#"> обработку моих персональных данных </a> и
+        подтверждаю,что ознакомился с <a href="#"
+          >политикой конфиденциальности</a
+        >
+      </Checkbox>
+      <div class="form__button">
+        <Button
+          variant="black"
+          type="submit"
+          size="medium"
+          inline="medium"
+          font="medium">Отправить</Button
+        >
+      </div>
+    </div>
+  </form>
+</div>
+
+<style is:global lang="scss">
+  .form {
+    @include section;
+    flex-grow: 0;
+    border: 1px solid;
+    border-color: var(--color-slate-400);
+    padding-block: 32px;
+
+    @include laptop-min {
+      padding-block: 64px;
+    }
+    &__main {
+      grid-area: center;
+      display: grid;
+      gap: 24px;
+      @include laptop-min {
+        grid-template-columns: auto 1fr;
+        grid-auto-rows: auto 1fr;
+      }
+    }
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      max-height: 200px;
+      object-fit: cover;
+
+      @include laptop-min {
+        max-height: unset;
+        height: 0;
+        min-height: 100%;
+        grid-row: span 2;
+      }
+    }
+
+    &__button {
+      display: contents;
+      @include laptop-min {
+        display: block;
+      }
+    }
+
+    &__inputs {
+      display: grid;
+      gap: 16px;
+    }
+  }
+</style>
