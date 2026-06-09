@@ -8,10 +8,10 @@
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
     <link rel="stylesheet" href="./css/lightgallery-bundle.min.css">
     <link rel="stylesheet" href="./css/swiper-bundle.css">
-    <link rel="stylesheet" href="./fonts/icons/icons.css?v=0.16258644">
-    <link rel="stylesheet" href="./css/custom-style.css?v=0.16259001">
-    <script type="module" src="./js/general.js?v=0.16258644"></script>
-    <script type="module" src="./js/blog.js?v=0.16258644"></script>
+    <link rel="stylesheet" href="./fonts/icons/icons.css?v=0.45712482">
+    <link rel="stylesheet" href="./css/custom-style.css?v=0.45713099">
+    <script type="module" src="./js/general.js?v=0.45712482"></script>
+    <script type="module" src="./js/blog.js?v=0.45712482"></script>
   </head>
   <body>
     <header class="header">
@@ -146,6 +146,34 @@
           </div>
         </div>
       </div>
+      <div class="form">
+        <form id="main-form" class="form__main">
+          <img src="./img/form.jpg" alt="form" loading="lazy" class="form__image">
+          <h2 class="title title--small">Забери меня</h2>
+          <div class="form__inputs">
+            <div class="field">
+              <label class="field__label">имя</label>
+              <div class="field__input"><input name="name" placeholder="введите ваше имя " id="name" required="" class="input"></div>
+            </div>
+            <div class="field">
+              <label class="field__label">телефон</label>
+              <div class="field__input"><input placeholder="+7 (900) 000 - 00 - 00" name="phone" id="phone" required="" class="input input--phone"></div>
+            </div>
+            <div class="field">
+              <label class="field__label">питомец, который вас заинтересовал</label>
+              <div class="field__input"><input placeholder="введите имя питомца" name="pet" id="pet" required="" class="input"></div>
+            </div>
+            <div class="field">
+              <label class="field__label">ваш вопрос</label>
+              <div class="field__input"><input placeholder="введите ваш вопрос" name="question" id="question" class="input"></div>
+            </div>
+            <div class="checkbox">
+              <input name="agree" required="" id="agree" type="checkbox" class="checkbox__element"> <label for="agree" class="checkbox__label">я даю согласие на <a href="#"> обработку моих персональных данных </a> и подтверждаю,что ознакомился с <a href="#">политикой конфиденциальности</a> </label>
+            </div>
+            <div class="form__button"><button type="submit" class="button button--variant-black button--size-medium button--font-medium button--inline-medium">Отправить</button></div>
+          </div>
+        </form>
+      </div>
     </main>
     <footer class="footer">
       <div class="footer__container">
@@ -170,5 +198,15 @@
         <a href="#" class="footer__conf">Политика конфиденциальности</a> <a href="#" class="footer__data">Обработка данных</a>
       </div>
     </footer>
+    <div class="modal modal--small" id="modal-success" aria-hidden="true">
+      <div tabindex="-1" class="modal__overlay" data-micromodal-close="true">
+        <div class="modal__container" role="dialog" aria-modal="true">
+          <button class="modal__close" data-micromodal-close=""><span class="icon icon-cross"></span></button>
+          <div class="modal__content">
+            <div class="modal-success"><h2 class="title title--small">Форма отправлена</h2></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
