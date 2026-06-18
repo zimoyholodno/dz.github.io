@@ -28,35 +28,12 @@
         </div>
       </div>
       <div class="header__mobile">
-        <button
-          class="burger"
-          data-drawer-trigger="mobile-menu"
-          data-open="false"
-        >
-          <span class="icon icon-burger burger__icon"></span>
-          <span class="icon icon-cross burger__open"></span>
-        </button>
         <a href="./index.html" class="header__logo">
           <span class="icon icon-logo header__logo-img"></span>
         </a>
       </div>
     </header>
-    <div
-      class="drawer drawer--left drawer--primary"
-      data-drawer-container="mobile-menu"
-      data-open="false"
-    >
-      <div class="drawer__back" data-drawer-close="mobile-menu"></div>
-      <div class="drawer__container">
-        <div class="drawer__content">
-          <div class="navigation">
-            <a href="./company.html" class="navigation__item"> о компании </a
-            ><a href="./blog.html" class="navigation__item"> блог </a
-            ><a href="./contact.html" class="navigation__item"> контакты </a>
-          </div>
-        </div>
-      </div>
-    </div>
+
     <main class="main">
       <div class="section section--center section--top-great">
         <div class="section__container">
@@ -1965,12 +1942,8 @@
       <div class="footer__container">
         <div class="footer__content">
           <a href="#" class="footer__logo"
-            ><img
-              src="img/full-logo.svg"
-              alt=""
-              class="footer__logo-img"
-            />/></a
-          >
+            ><img src="img/full-logo.svg" alt="" class="footer__logo-img"
+          /></a>
           <div class="footer__cont">
             <p>
               Lorem ipsum dolor sit amet consectet adipiscing elit eget
@@ -2016,7 +1989,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/micromodal@0.4.10/dist/micromodal.min.js"></script>
     <script>
-      // Page width
       function setRealPageWidth() {
         document.documentElement.style.setProperty(
           "--real-page-width",
@@ -2026,57 +1998,6 @@
       setRealPageWidth();
       window.addEventListener("resize", setRealPageWidth);
 
-      // Drawer
-      function initDrawer(name, duration = 200) {
-        const triggers = document.querySelectorAll(
-          `[data-drawer-trigger="${name}"]`,
-        );
-        const closes = document.querySelectorAll(
-          `[data-drawer-close="${name}"]`,
-        );
-        const container = document.querySelector(
-          `[data-drawer-container="${name}"]`,
-        );
-        if (!container) return;
-        container.style.setProperty(
-          "--transition",
-          `${duration}ms ease-in-out`,
-        );
-        container.setAttribute("inert", "true");
-        let closeTimeoutId = null;
-        function setTriggers(v) {
-          triggers.forEach((t) => t.setAttribute("data-open", v));
-        }
-        setTriggers("false");
-        function closeDrawer() {
-          container?.setAttribute("data-open", "idle");
-          if (closeTimeoutId) clearTimeout(closeTimeoutId);
-          closeTimeoutId = setTimeout(() => {
-            container?.setAttribute("data-open", "false");
-            container?.setAttribute("inert", "true");
-            document.documentElement.style.overflow = "auto";
-            setTriggers("false");
-            closeTimeoutId = null;
-          }, duration);
-        }
-        function openDrawer() {
-          if (closeTimeoutId) clearTimeout(closeTimeoutId);
-          container?.setAttribute("data-open", "true");
-          container?.removeAttribute("inert");
-          document.documentElement.style.overflow = "hidden";
-          setTriggers("true");
-        }
-        function onTrigger() {
-          return container?.getAttribute("data-open") === "true"
-            ? closeDrawer()
-            : openDrawer();
-        }
-        triggers.forEach((t) => t.addEventListener("click", onTrigger));
-        closes.forEach((c) => c.addEventListener("click", closeDrawer));
-      }
-      initDrawer("mobile-menu", 200);
-
-      // Header scroll
       let lastScrollTop = 0;
       window.addEventListener("scroll", function () {
         let currentScrollTop =
@@ -2093,7 +2014,6 @@
         lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
       });
 
-      // Pet swiper
       if (typeof Swiper !== "undefined") {
         new Swiper(".swiper-pet__swiper--similar", {
           slidesPerView: 1,
@@ -2123,7 +2043,6 @@
         });
       }
 
-      // Modal
       if (typeof MicroModal !== "undefined")
         MicroModal.init({ awaitCloseAnimation: true, disableScroll: true });
     </script>

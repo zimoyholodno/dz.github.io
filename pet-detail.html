@@ -28,35 +28,12 @@
         </div>
       </div>
       <div class="header__mobile">
-        <button
-          class="burger"
-          data-drawer-trigger="mobile-menu"
-          data-open="false"
-        >
-          <span class="icon icon-burger burger__icon"></span>
-          <span class="icon icon-cross burger__open"></span>
-        </button>
         <a href="./index.html" class="header__logo">
           <span class="icon icon-logo header__logo-img"></span>
         </a>
       </div>
     </header>
-    <div
-      class="drawer drawer--left drawer--primary"
-      data-drawer-container="mobile-menu"
-      data-open="false"
-    >
-      <div class="drawer__back" data-drawer-close="mobile-menu"></div>
-      <div class="drawer__container">
-        <div class="drawer__content">
-          <div class="navigation">
-            <a href="./company.html" class="navigation__item"> о компании </a
-            ><a href="./blog.html" class="navigation__item"> блог </a
-            ><a href="./contact.html" class="navigation__item"> контакты </a>
-          </div>
-        </div>
-      </div>
-    </div>
+
     <main class="main">
       <div
         class="section section--center section--bottom-small section--top-great"
@@ -3712,12 +3689,8 @@
       <div class="footer__container">
         <div class="footer__content">
           <a href="#" class="footer__logo"
-            ><img
-              src="img/full-logo.svg"
-              alt=""
-              class="footer__logo-img"
-            />/></a
-          >
+            ><img src="img/full-logo.svg" alt="" class="footer__logo-img"
+          /></a>
           <div class="footer__cont">
             <p>
               Lorem ipsum dolor sit amet consectet adipiscing elit eget
@@ -3769,7 +3742,6 @@
     <script src="https://cdn.jsdelivr.net/npm/choices.js@10.2.0/public/assets/scripts/choices.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@ya/ymaps3-types@0.0.14/index.js"></script>
     <script>
-      // ==================== HELPER FUNCTIONS ====================
       function getSectionOffset(selector) {
         const el = document.querySelector(selector);
         if (!el) return 0;
@@ -3779,18 +3751,6 @@
         return paddingLeft + marginLeft;
       }
 
-      function formatDate(dateStr) {
-        const d = new Date(dateStr);
-        return d
-          .toLocaleDateString("ru", {
-            year: "numeric",
-            month: "numeric",
-            day: "numeric",
-          })
-          .replace(/,/g, "");
-      }
-
-      // ==================== PAGE WIDTH ====================
       function setRealPageWidth() {
         document.documentElement.style.setProperty(
           "--real-page-width",
@@ -3800,63 +3760,6 @@
       setRealPageWidth();
       window.addEventListener("resize", setRealPageWidth);
 
-      // ==================== DRAWER ====================
-      function initDrawer(name, duration = 200) {
-        const triggers = document.querySelectorAll(
-          `[data-drawer-trigger="${name}"]`,
-        );
-        const closes = document.querySelectorAll(
-          `[data-drawer-close="${name}"]`,
-        );
-        const container = document.querySelector(
-          `[data-drawer-container="${name}"]`,
-        );
-        if (!container) return;
-
-        container.style.setProperty(
-          "--transition",
-          `${duration}ms ease-in-out`,
-        );
-        container.setAttribute("inert", "true");
-        let closeTimeoutId = null;
-
-        function setTriggers(value) {
-          triggers.forEach((t) => t.setAttribute("data-open", value));
-        }
-        setTriggers("false");
-
-        function closeDrawer() {
-          container?.setAttribute("data-open", "idle");
-          if (closeTimeoutId) clearTimeout(closeTimeoutId);
-          closeTimeoutId = setTimeout(() => {
-            container?.setAttribute("data-open", "false");
-            container?.setAttribute("inert", "true");
-            document.documentElement.style.overflow = "auto";
-            setTriggers("false");
-            closeTimeoutId = null;
-          }, duration);
-        }
-
-        function openDrawer() {
-          if (closeTimeoutId) clearTimeout(closeTimeoutId);
-          container?.setAttribute("data-open", "true");
-          container?.removeAttribute("inert");
-          document.documentElement.style.overflow = "hidden";
-          setTriggers("true");
-        }
-
-        function onTrigger() {
-          return container?.getAttribute("data-open") === "true"
-            ? closeDrawer()
-            : openDrawer();
-        }
-
-        triggers.forEach((t) => t.addEventListener("click", onTrigger));
-        closes.forEach((c) => c.addEventListener("click", closeDrawer));
-      }
-      initDrawer("mobile-menu", 200);
-
-      // ==================== HEADER SCROLL ====================
       let lastScrollTop = 0;
       window.addEventListener("scroll", function () {
         let currentScrollTop =
@@ -3873,7 +3776,6 @@
         lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
       });
 
-      // ==================== TABS ====================
       document.querySelectorAll(".tab").forEach((tab) => {
         const triggers = tab.querySelectorAll(".pill");
         const contents = tab.querySelectorAll(".tab__content");
@@ -3922,7 +3824,6 @@
         triggers.forEach((t) => t.addEventListener("click", clickHandler));
       });
 
-      // ==================== DETAIL SWIPER ====================
       if (typeof Swiper !== "undefined") {
         const thumbs = new Swiper(".preview-swiper__thumbs", {
           direction: "vertical",
@@ -3978,41 +3879,6 @@
           },
         });
       }
-
-      // ==================== MODAL ====================
-      if (typeof MicroModal !== "undefined") {
-        MicroModal.init({ awaitCloseAnimation: true, disableScroll: true });
-        const form = document.querySelector("#main-form");
-        if (form) {
-          form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            setTimeout(() => MicroModal.show("modal-success"), 500);
-          });
-        }
-      }
-
-      // ==================== PHONE MASK ====================
-      document.querySelectorAll(".input--phone").forEach((input) => {
-        if (input instanceof HTMLInputElement && typeof IMask !== "undefined") {
-          const mask = IMask(input, {
-            mask: "+{7} (\\900) 000-00-00",
-            prepare: (v, m) =>
-              m.value === "" && v.startsWith("8") ? "7" + v.slice(1) : v,
-          });
-          input.addEventListener("paste", (e) => {
-            e.preventDefault();
-            const paste = (e.clipboardData || window.clipboardData).getData(
-              "text",
-            );
-            let clean = paste.replace(/\D/g, "");
-            if (clean[0] === "8") clean = clean.slice(1);
-            mask.value = "+" + clean;
-            mask.updateValue();
-            mask.updateControl();
-            input.setSelectionRange(input.value.length, input.value.length);
-          });
-        }
-      });
     </script>
   </body>
 </html>
